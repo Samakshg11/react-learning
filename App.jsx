@@ -3,6 +3,7 @@ import Hero from "./components/Hero.jsx";
 import styles from "./styles/App.module.css";
 import ContactForm from "./components/contactForm.jsx";
 import Counter from "./components/counter.jsx";
+import ThemeToggle from "./components/ThemeToggle.jsx";
 
 export default function App() {
   return (
@@ -11,7 +12,9 @@ export default function App() {
     // </div>
     <div style={{padding:"40px"}}>
   
-    <Counter/>
+
+      <ThemeToggle/>
+
     </div>
 
   );
