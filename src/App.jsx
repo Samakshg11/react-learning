@@ -70,7 +70,7 @@
 
 
 
-//Q=>3
+// Q=>3
 
 // import React, { use, useState } from "react";
 // import { configureStore, createSlice } from "@reduxjs/toolkit";
@@ -135,37 +135,36 @@
 //   );
 // }
 
-//Q=>4
+// Q=>4
 
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// function App(){
-//   const [data,setData]=useState([]);
-//   const fetchData = async()=>{
-//     try{
-//       const res= await axios.get("https://jsonplaceholder.typicode.com/posts");
-//       setData(res.data);
-//       console.log(res.data);
-//     }
-//     catch(err){
-//       console.log("Error fetching data:", err.message);
-//     }
-//   }
-//   useEffect(()=>{
-//     fetchData()
-// },[])
-//   return(
-//     <>
-//       <h1>Axios Example</h1>
-//      {data.map((item) => (
-//         <p key={item.id}>{item.title}</p>
-//       ))}
-//     </>
-//   )
-// }
-// export default App;
+import axios from "axios";
+import { useEffect, useState } from "react";
+function App(){
+  const [data,setData]=useState([]);
+  const fetchData = async()=>{
+    try{
+      const res= await axios.get("https://jsonplaceholder.typicode.com/posts");
+      setData(res.data);
+      console.log(res.data);
+    }
+    catch(err){
+      console.log("Error fetching data:", err.message);
+    }
+  }
+  useEffect(()=>{
+    fetchData()
+},[])
+  return(
+    <>
+      <h1>Axios Example</h1>
+     {data.map((item) => (
+        <p key={item.id}>{item.title}</p>
+      ))}
+    </>
+  )
+}
+export default App;
 
 
 
-// Q=>5
 
