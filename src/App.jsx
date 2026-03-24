@@ -1,6 +1,10 @@
 // import { useState } from "react"
 // import { useEffect } from "react";
 
+
+
+// const { useState } = require("react");
+
 //  function App() {
 //   const [Data,setData] = useState([]);
 //   const res = fetch("https://jsonplaceholder.typicode.com/posts")
@@ -137,36 +141,63 @@
 
 // Q=>4
 
-import axios from "axios";
-import { useEffect, useState } from "react";
-function App(){
-  const [data,setData]=useState([]);
-  const fetchData = async()=>{
-    try{
-      const res= await axios.get("https://jsonplaceholder.typicode.com/posts");
-      setData(res.data);
-      console.log(res.data);
-    }
-    catch(err){
-      console.log("Error fetching data:", err.message);
-    }
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+// function App(){
+//   const [data,setData]=useState([]);
+//   const fetchData = async()=>{
+//     try{
+//       const res= await axios.get("https://jsonplaceholder.typicode.com/posts");
+//       setData(res.data);
+//       console.log(res.data);
+//     }
+//     catch(err){
+//       console.log("Error fetching data:", err.message);
+//     }
+//   }
+//   useEffect(()=>{
+//     fetchData()
+// },[])
+//   return(
+//     <>
+//       <h1>Axios Example</h1>
+//      {data.map((item) => (
+//         <p key={item.id}>{item.title}</p>
+//       ))}
+//     </>
+//   )
+// }
+// export default App;
+
+import { useState } from "react";
+
+
+//Q=>5
+
+
+const App = () => {
+  const [name,setname]=useState("");
+  const[email,setemail]=useState("");
+
+const handlesubmit= (e)=>{
+  e.preventDefault();
+  if(!name || !email){
+    alert("Please fill in all fields");
+    return;
   }
-  useEffect(()=>{
-    fetchData()
-},[])
-  return(
-    <>
-      <h1>Axios Example</h1>
-     {data.map((item) => (
-        <p key={item.id}>{item.title}</p>
-      ))}
-    </>
-  )
+  setname("");
+  setemail("");
 }
+  return (
+    <>
+      <h1>Form Validation</h1>
+      <form onSubmit={handlesubmit}>
+        <input type="text" placeholder="Enter name" value={name} onChange={(e)=>setname(e.target.value)} />
+        <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+}
+
 export default App;
-
-
-
-
-//new question
-imp
