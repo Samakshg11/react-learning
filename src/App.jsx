@@ -464,25 +464,69 @@
 //Q=>9
 
 
-import About from "../components/About";
-import Home from "../components/Home";
-import Contact from "../components/Contact";
-import{BrowserRouter,Routes,Route,Link} from "react-router-dom";
+// import About from "../components/About";
+// import Home from "../components/Home";
+// import Contact from "../components/Contact";
+// import{BrowserRouter,Routes,Route,Link} from "react-router-dom";
+// const App=()=>{
+//   return(
+//     <>
+//     <BrowserRouter>
+//   {/* <nav className="flex justify-around">
+//       <Link to="/">Home</Link>
+//       <Link to="/about">About</Link>
+//       <Link to="/contact">Contact</Link>
+//     // </nav> */}
+//     <p className="flex justify-center mt-4">
+//       <Link to="/" className="text-bold">Home</Link>
+//       <Link to="/about" className="text-bold mx-4">About</Link>
+//       <Link to="/contact" className=" text-bold">Contact</Link>
+//     </p>
+
+
+//     <Routes>
+//     <Route path="/" element={<Home/>}/>
+//     <Route path="/about" element={<About/>}/>
+//     <Route path="/contact" element={<Contact/>}/>
+//     </Routes>
+//     </BrowserRouter>
+//     </>
+//   )
+// }
+// export default App;
+
+
+//Q=>10
+
+import { useState } from "react";
+
 const App=()=>{
+  const [name,setname]=useState("")l;
+  const [email,setemail]=useState("");
+  const handleSubmit= async (e)=>{
+    e.preventDefault();
+    const data ={name,email};
+    try{
+      const res= await fetch("https://jsonplaceholder.typicode.com/posts",{
+        method:"POST",
+        body:JSON.stringify(data)
+      });
+      const result= await res.json();
+      console.log("Form submitted successfully:", result);
+      setname("");
+      setemail("");
+    }
+    catch(err){
+      console.error("Error submitting form:", err.message);
+    }
+  };
   return(
     <>
-    <BrowserRouter>
-    <nav className="flex justify-center py-5 my-5">
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
-    </nav>
-    <Routes>
-    <Route path="/" element={<Home/>}/>
-    <Route path="/about" element={<About/>}/>
-    <Route path="/contact" element={<Contact/>}/>
-    </Routes>
-    </BrowserRouter>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Enter name" value={name}onChange={(e)=>setname(e.target.value)} />
+      <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
+      <button type="submit">Submit</button>
+    </form>
     </>
   )
 }
