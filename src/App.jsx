@@ -501,7 +501,7 @@
 import { useState } from "react";
 
 const App=()=>{
-  const [name,setname]=useState("")l;
+  const [name,setname]=useState("");
   const [email,setemail]=useState("");
   const handleSubmit= async (e)=>{
     e.preventDefault();
@@ -513,8 +513,7 @@ const App=()=>{
       });
       const result= await res.json();
       console.log("Form submitted successfully:", result);
-      setname("");
-      setemail("");
+     
     }
     catch(err){
       console.error("Error submitting form:", err.message);
