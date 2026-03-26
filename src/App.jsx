@@ -203,31 +203,31 @@
 // export default App;
 
 
+//Q=>6
+
+// const App = () => {
+//   const [name,setname]=useState("");
+//   const[email,setemail]=useState("");
+
+// const handlesubmit= (e)=>{
+//   e.preventDefault();
+//   setname("");
+//   setemail("");
+// }
+//   return (
+//     <>
+//       <h1>Form Validation</h1>
+//       <form onSubmit={handlesubmit}>
+//         <input type="text" placeholder="Enter name" value={name} onChange={(e)=>setname(e.target.value)} />
+//         <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
+//         <button type="submit">Submit</button>
+//       </form>
+//     </>
+//   );
+// }
+
+// export default App;
 
 
-const App = () => {
-  const [name,setname]=useState("");
-  const[email,setemail]=useState("");
 
-const handlesubmit= (e)=>{
-  e.preventDefault();
-  if(!name || !email){
-    alert("Please fill in all fields");
-    return;
-  }
-  setname("");
-  setemail("");
-}
-  return (
-    <>
-      <h1>Form Validation</h1>
-      <form onSubmit={handlesubmit}>
-        <input type="text" placeholder="Enter name" value={name} onChange={(e)=>setname(e.target.value)} />
-        <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
-    </>
-  );
-}
-
-export default App;
+//Q=>8
