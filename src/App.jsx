@@ -382,15 +382,15 @@ const User = () => {
   );
 };
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/user" element={<User />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+// const App = () => {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/user" element={<User />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// };
 
-export default App;
+// export default App;
