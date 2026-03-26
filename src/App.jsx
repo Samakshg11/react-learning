@@ -3,6 +3,8 @@
 
 
 
+
+
 // const { useState } = require("react");
 
 //  function App() {
@@ -199,6 +201,7 @@
 //     </>
 //   );
 // }
+<<<<<<< HEAD
 
 // export default App;
 
@@ -232,4 +235,95 @@
 
 //Q=>7
 
-import { useState } from "react";
+
+
+
+// export default App;
+
+
+//Q=>6
+
+
+//  const App = () => {
+//   const [name,setname]=useState("");
+//   const[email,setemail]=useState("");
+
+// const handlesubmit= (e)=>{
+//   e.preventDefault();
+//   setname("");
+//   setemail("");
+// }
+//   return (
+//     <>
+//       <h1>Form Validation</h1>
+//       <form onSubmit={handlesubmit}>
+//         <input type="text" placeholder="Enter name" value={name} onChange={(e)=>setname(e.target.value)} />
+//         <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
+//         <button type="submit">Submit</button>
+//       </form>
+//     </>
+//   );
+// }
+
+// export default App;
+
+
+
+//Q=>7
+
+// import { useState } from "react";
+
+// function App(){
+//   const [name,setname]=useState("");
+//   return(
+//     <>
+//       <h1>UnControlled Component</h1>
+//       <input type="text" placeholder="Enter your nmae" onChange={(e)=>setname(e.target.value)} />
+//       <p>Your name is: {name}</p>
+//     </>
+//   )
+// }
+// export default App;
+
+
+//Q=>8
+
+import { BrowserRouter, Routes, Route, Link, useSearchParams } from "react-router-dom";
+
+const Home = () => {
+  return (
+    <>
+      <h1>Home Page</h1>
+      <Link to="/user?name=Samaksh&age=20">Go to User</Link>
+    </>
+  );
+};
+
+const User = () => {
+  const [params] = useSearchParams();
+
+  const name = params.get("name");
+  const age = params.get("age");
+
+  return (
+    <>
+      <h1>User Page</h1>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
+
