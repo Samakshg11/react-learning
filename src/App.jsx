@@ -337,13 +337,13 @@ const Home = () => {
   const [age, setAge] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    if (!name || !age) {
-      alert("Enter all fields");
-      return;
-    }
-    navigate(`/user?name=${name}&age=${age}`);
-  };
+//   const handleSubmit = () => {
+//     if (!name || !age) {
+//       alert("Enter all fields");
+//       return;
+//     }
+//     navigate(`/user?name=${name}&age=${age}`);
+//   };
 
   return (
     <>
