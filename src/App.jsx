@@ -1,6 +1,8 @@
 // import { useState } from "react"
 // import { useEffect } from "react";
 
+// import { BrowserRouter, Route, useSearchParams } from "react-router-dom"
+
 
 
 
@@ -328,69 +330,160 @@
 
 
 
+// import { BrowserRouter,Route,Routes,Link,useSearchParams } from "react-router-dom";
+// const Home =()=>{
+  
+//   return(
+//     <>
+//     <h1>Home Page</h1>
+//     <Link to="/users?name=Samaksh&age=20">Go to user page</Link>
+//     </>
+//   )
+// }
+// const User=()=>{
+//   const [params]=useSearchParams();
+//   const name=params.get("name");
+//   const age= params.get("age");
+//   return (
+//     <>
+//     <h1>User details</h1>
+//     <p>User name: {name}</p>
+//     <p>User age: {age}</p>
+//     </>
+//   );
+// }
+// const App=()=>{
+//   return(
+//     <BrowserRouter>
+//     <Routes>
+//       <Route path="/" element={<Home/>}/>
+//       <Route path="/users" element={<User/>}/>
+//     </Routes>
+//     </BrowserRouter>
+//   )
+// }
+// export default App;
 
-import { BrowserRouter, Routes, Route, useNavigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
 
-const Home = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const navigate = useNavigate();
+// import { useState } from "react";
+// import { Link } from "react-router-dom";
 
-  const handleSubmit = () => {
-    if (!name || !age) {
-      alert("Enter all fields");
-      return;
-    }
-    navigate(`/user?name=${name}&age=${age}`);
-  };
+// const Home = () => {
+//   const [name, setName] = useState("");
+//   const [age, setAge] = useState("");
 
-  return (
+//   return (
+//     <>
+//       <h1>Home Page</h1>
+
+//       <input
+//         type="text"
+//         placeholder="Enter name"
+//         onChange={(e) => setName(e.target.value)}
+//       />
+
+//       <input
+//         type="number"
+//         placeholder="Enter age"
+//         onChange={(e) => setAge(e.target.value)}
+//       />
+
+//       <br /><br />
+
+//       <Link to={`/users?name=${name}&age=${age}`}>
+//         Go to User
+//       </Link>
+//     </>
+//   );
+// };
+
+// export default Home;
+
+
+// import { BrowserRouter, Routes, Route, Link, useSearchParams } from "react-router-dom";
+// import { useState } from "react";
+
+// const Home = () => {
+//   const [name, setName] = useState("");
+//   const [age, setAge] = useState("");
+
+//   return (
+//     <>
+//       <h1>Home Page</h1>
+    
+//       <input type="text"
+//         placeholder="Enter name"
+//         onChange={(e) => setName(e.target.value)}
+//       />
+
+//       <input type="number"
+//         placeholder="Enter age"
+//         onChange={(e) => setAge(e.target.value)}
+//       />
+
+//       <br /><br />
+
+//       <Link to={`/user?name=${name}&age=${age}`}>
+//        <button>Go to User</button>
+//        </Link>
+//     </>
+//   );
+// };
+
+// const User = () => {
+//   const [params] = useSearchParams();
+
+//   const name = params.get("name");
+//   const age = params.get("age");
+
+
+//   return (
+//     <>
+//       <h1>User Page</h1>
+//       <p>Name: {name}</p>
+//       <p>Age: {age}</p>
+//     </>
+//   );
+// };
+
+// const App = () => {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/user" element={<User />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// };
+
+// export default App;
+
+
+
+//Q=>9
+
+
+import About from "../components/About";
+import Home from "../components/Home";
+import Contact from "../components/Contact";
+import{BrowserRouter,Routes,Route,Link} from "react-router-dom";
+const App=()=>{
+  return(
     <>
-      <h1>Home Page</h1>
-
-      <input
-        type="text"
-        placeholder="Enter name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Enter age"
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
-      />
-
-      <br /><br />
-
-      <button onClick={handleSubmit}>Go to User</button>
-    </>
-  );
-};
-
-const User = () => {
-  const [params] = useSearchParams();
-
-  return (
-    <>
-      <h1>User Page</h1>
-      <p>Name: {params.get("name")}</p>
-      <p>Age: {params.get("age")}</p>
-    </>
-  );
-};
-
-const App = () => {
-  return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/user" element={<User />} />
-      </Routes>
+    <nav className="flex justify-center py-5 my-5">
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
+    </nav>
+    <Routes>
+    <Route path="/" element={<Home/>}/>
+    <Route path="/about" element={<About/>}/>
+    <Route path="/contact" element={<Contact/>}/>
+    </Routes>
     </BrowserRouter>
-  );
-};
-
+    </>
+  )
+}
 export default App;
