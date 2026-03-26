@@ -333,9 +333,9 @@ import { BrowserRouter, Routes, Route, useNavigate, useSearchParams } from "reac
 import { useState } from "react";
 
 const Home = () => {
-//   const [name, setName] = useState("");
-//   const [age, setAge] = useState("");
-//   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (!name || !age) {
