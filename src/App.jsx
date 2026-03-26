@@ -201,7 +201,6 @@
 //     </>
 //   );
 // }
-<<<<<<< HEAD
 
 // export default App;
 
