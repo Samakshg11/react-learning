@@ -349,12 +349,12 @@ const Home = () => {
     <>
       <h1>Home Page</h1>
 
-      <input
+      {/* <input
         type="text"
         placeholder="Enter name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-      />
+      /> */}
 
       <input
         type="text"
