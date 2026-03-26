@@ -287,13 +287,85 @@
 
 //Q=>8
 
-import { BrowserRouter, Routes, Route, Link, useSearchParams } from "react-router-dom";
+// import { BrowserRouter, Routes, Route, Link, useSearchParams } from "react-router-dom";
+
+// const Home = () => {
+//   return (
+//     <>
+//       <h1>Home Page</h1>
+//       <Link to="/user?name=Samaksh&age=20">Go to User</Link>
+//     </>
+//   );
+// };
+
+// const User = () => {
+//   const [params] = useSearchParams();
+
+//   const name = params.get("name");
+//   const age = params.get("age");
+
+//   return (
+//     <>
+//       <h1>User Page</h1>
+//       <p>Name: {name}</p>
+//       <p>Age: {age}</p>
+//     </>
+//   );
+// };
+
+// const App = () => {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/user" element={<User />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// };
+
+// export default App;
+
+
+
+
+import { BrowserRouter, Routes, Route, useNavigate, useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    if (!name || !age) {
+      alert("Enter all fields");
+      return;
+    }
+    navigate(`/user?name=${name}&age=${age}`);
+  };
+
   return (
     <>
       <h1>Home Page</h1>
-      <Link to="/user?name=Samaksh&age=20">Go to User</Link>
+
+      <input
+        type="text"
+        placeholder="Enter name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <input
+        type="text"
+        placeholder="Enter age"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
+      />
+
+      <br /><br />
+
+      <button onClick={handleSubmit}>Go to User</button>
     </>
   );
 };
@@ -301,14 +373,11 @@ const Home = () => {
 const User = () => {
   const [params] = useSearchParams();
 
-  const name = params.get("name");
-  const age = params.get("age");
-
   return (
     <>
       <h1>User Page</h1>
-      <p>Name: {name}</p>
-      <p>Age: {age}</p>
+      <p>Name: {params.get("name")}</p>
+      <p>Age: {params.get("age")}</p>
     </>
   );
 };
@@ -325,4 +394,3 @@ const App = () => {
 };
 
 export default App;
-
