@@ -356,7 +356,12 @@ const Home = () => {
         onChange={(e) => setName(e.target.value)}
       />
 
-     
+      <input
+        type="text"
+        placeholder="Enter age"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
+      />
 
       <br /><br />
 
