@@ -511,11 +511,12 @@ const App=()=>{
         method:"POST",
         body:JSON.stringify(data)
       });
+      const result= await res.json();
       console.log("Form submitted successfully:", result);
      
     }
     catch(err){
-      console.error("Error submitting form:", err.message);
+      
     }
   };
   return(
