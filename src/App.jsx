@@ -516,7 +516,7 @@ const App=()=>{
      
     }
     catch(err){
-      
+      console.error("Error submitting form:", err.message);
     }
   };
   return(
