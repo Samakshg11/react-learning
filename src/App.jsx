@@ -659,71 +659,104 @@
 // export default App;
 
 
+// import { useRef } from "react";
+// import "./App.css";
+
+// function App() {
+//   const passwordRef = useRef();
+//   const confirmRef = useRef();
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (passwordRef.current.value !== confirmRef.current.value) {
+//       alert("Passwords do not match!");
+//       return;
+//     }
+
+//     alert("Form submitted successfully!");
+//   };
+
+//   return (
+//     <div className="container">
+//       <form onSubmit={handleSubmit} className="form">
+//         <h2>Signup Form</h2>
+
+//         {/* Username */}
+//         <input
+//           type="text"
+//           placeholder="Username"
+//           required
+//           minLength="3"
+//           maxLength="15"
+//           pattern="[A-Za-z0-9]+"
+//           title="Only letters and numbers allowed"
+//         />
+
+//         {/* Email */}
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           required
+//         />
+
+//         {/* Password */}
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           required
+//           minLength="6"
+//           ref={passwordRef}
+//         />
+
+//         {/* Confirm Password */}
+//         <input
+//           type="password"
+//           placeholder="Confirm Password"
+//           required
+//           minLength="6"
+//           ref={confirmRef}
+//         />
+
+//         <button type="submit">Register</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
 import { useRef } from "react";
 import "./App.css";
 
-function App() {
-  const passwordRef = useRef();
-  const confirmRef = useRef();
-
-  const handleSubmit = (e) => {
+const App=()=>{
+  const passwordRef=useRef();
+  const confirmRef=useRef();
+  
+  const handleSubmit=(e)=>{
     e.preventDefault();
-
-    if (passwordRef.current.value !== confirmRef.current.value) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    alert("Form submitted successfully!");
-  };
-
-  return (
+  if(passwordRef.current.value !== confirmRef.current.value){
+    alert("passwords do not match");
+    return;
+  }
+  alert("Form submitted successfully!");
+  }
+  return(
     <div className="container">
-      <form onSubmit={handleSubmit} className="form">
-        <h2>Signup Form</h2>
-
-        {/* Username */}
-        <input
-          type="text"
-          placeholder="Username"
-          required
-          minLength="3"
-          maxLength="15"
-          pattern="[A-Za-z0-9]+"
-          title="Only letters and numbers allowed"
-        />
-
-        {/* Email */}
-        <input
-          type="email"
-          placeholder="Email"
-          required
-        />
-
-        {/* Password */}
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          minLength="6"
-          ref={passwordRef}
-        />
-
-        {/* Confirm Password */}
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          required
-          minLength="6"
-          ref={confirmRef}
-        />
-
+      <form onSubmit={handleSubmit}>
+        <h1>Signup Form</h1>
+        <input type="text" placeholder="Enter username" 
+        required minLength="3" maxLength="15" pattern="[A-Za-z0-9]+" title="Only letters and numbers allowed" />
+        <input type="email" placeholder="Enter email" required />
+        <input type="password" placeholder="Enter password" required minLength="6" ref={passwordRef} />
+        <input type="password" placeholder="Confirm password" required minLength="6" ref={confirmRef} />
         <button type="submit">Register</button>
       </form>
     </div>
-  );
+  )
+
 }
-
 export default App;
-
-
