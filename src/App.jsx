@@ -530,3 +530,129 @@
 //   )
 // }
 // export default App;
+
+
+
+
+//Q=>11
+import { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const validate = () => {
+    let err = {};
+
+    // Username validation
+    if (form.username.length < 3 || form.username.length > 15) {
+      err.username = "Username must be 3-15 characters";
+    } else {
+      for (let ch of form.username) {
+        if (
+          !(ch >= "a" && ch <= "z") &&
+          !(ch >= "A" && ch <= "Z") &&
+          !(ch >= "0" && ch <= "9")
+        ) {
+          err.username = "No special characters allowed";
+          break;
+        }
+      }
+    }
+
+    // Email validation (simple)
+    if (
+      !form.email.includes("@") ||
+      !form.email.includes(".") ||
+      form.email.startsWith("@") ||
+      form.email.endsWith("@")
+    ) {
+      err.email = "Invalid email format";
+    }
+
+    // Password validation
+    if (form.password.length < 6) {
+      err.password = "Password must be at least 6 characters";
+    }
+
+    // Confirm password
+    if (form.password !== form.confirmPassword) {
+      err.confirmPassword = "Passwords do not match";
+    }
+
+    return err;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+
+    if (Object.keys(validationErrors).length === 0) {
+      alert("Form submitted successfully!");
+      console.log(form);
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  return (
+    <div className="container">
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Signup Form</h2>
+
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={form.username}
+          onChange={handleChange}
+        />
+        {errors.username && <p className="error">{errors.username}</p>}
+
+        <input
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+        />
+        {errors.email && <p className="error">{errors.email}</p>}
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+        />
+        {errors.password && <p className="error">{errors.password}</p>}
+
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={form.confirmPassword}
+          onChange={handleChange}
+        />
+        {errors.confirmPassword && (
+          <p className="error">{errors.confirmPassword}</p>
+        )}
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
