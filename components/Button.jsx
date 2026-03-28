@@ -1,4 +1,4 @@
-function Button(props) {
+function buttons(props) {
     const handleClick = () => {
         alert("button clicked");
     };
@@ -17,4 +17,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export default buttons;
