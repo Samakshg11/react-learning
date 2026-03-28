@@ -498,35 +498,35 @@
 
 //Q=>10
 
-import { useState } from "react";
+// import { useState } from "react";
 
-const App=()=>{
-  const [name,setname]=useState("");
-  const [email,setemail]=useState("");
-  const handleSubmit= async (e)=>{
-    e.preventDefault();
-    const data ={name,email};
-    try{
-      const res= await fetch("https://jsonplaceholder.typicode.com/posts",{
-        method:"POST",
-        body:JSON.stringify(data)
-      });
-      const result= await res.json();
-      console.log("Form submitted successfully:", result);
+// const App=()=>{
+//   const [name,setname]=useState("");
+//   const [email,setemail]=useState("");
+//   const handleSubmit= async (e)=>{
+//     e.preventDefault();
+//     const data ={name,email};
+//     try{
+//       const res= await fetch("https://jsonplaceholder.typicode.com/posts",{
+//         method:"POST",
+//         body:JSON.stringify(data)
+//       });
+//       const result= await res.json();
+//       console.log("Form submitted successfully:", result);
      
-    }
-    catch(err){
-      console.error("Error submitting form:", err.message);
-    }
-  };
-  return(
-    <>
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Enter name" value={name}onChange={(e)=>setname(e.target.value)} />
-      <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
-      <button type="submit">Submit</button>
-    </form>
-    </>
-  )
-}
-export default App;
+//     }
+//     catch(err){
+//       console.error("Error submitting form:", err.message);
+//     }
+//   };
+//   return(
+//     <>
+//     <form onSubmit={handleSubmit}>
+//       <input type="text" placeholder="Enter name" value={name}onChange={(e)=>setname(e.target.value)} />
+//       <input type="email" placeholder="Enter email" value={email} onChange={(e)=>setemail(e.target.value)} />
+//       <button type="submit">Submit</button>
+//     </form>
+//     </>
+//   )
+// }
+// export default App;
