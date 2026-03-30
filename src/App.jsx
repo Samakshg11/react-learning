@@ -808,24 +808,35 @@
 
 
 
+// import { useState } from "react";
+
+// function App() {
+//   const [show, setShow] = useState(true);
+
+//   const handleToggle = () => {
+//     setShow(!show);
+//   };
+
+//   return (
+//    <>
+//       <button onClick={handleToggle}>
+//         {show ? "Hide" : "Show"}
+//       </button>
+
+//       {show && <h1>Hello React</h1>}
+//     </>
+//   );
+// }
+
+// export default App;
+
+
+
+
+//calculator app 
+
+
 import { useState } from "react";
-
-function App() {
-  const [show, setShow] = useState(true);
-
-  const handleToggle = () => {
-    setShow(!show);
-  };
-
-  return (
-   <>
-      <button onClick={handleToggle}>
-        {show ? "Hide" : "Show"}
-      </button>
-
-      {show && <h1>Hello React</h1>}
-    </>
-  );
+function App(){
+    const [num1,setnum1]=useState("");
 }
-
-export default App;
