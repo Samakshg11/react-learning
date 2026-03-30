@@ -763,16 +763,16 @@
 
 
 //Q=>12
-import Button from "../components/Button";
+// import Button from "../components/Button";
 
-function App() {
-  return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <Button label="Click Me" bgColor="blue" />
-      <br /><br />
-      <Button label="Delete" bgColor="red" />
-    </div>
-  );
-}
+// function App() {
+//   return (
+//     <div style={{ textAlign: "center", marginTop: "50px" }}>
+//       <Button label="Click Me" bgColor="blue" />
+//       <br /><br />
+//       <Button label="Delete" bgColor="red" />
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
