@@ -956,26 +956,43 @@
 //form validations
 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-const App =()=>{
-    const [name,setname]=useState("");
-    const [error,seterror]=useState("");
-    const handleSubmit=()=>{
-        if(name===""){
-            seterror("name is mandatory");
-        }
-        else{
-        alert("Added successfully");
-        }
-    }
-    return(
-        <>
-        <input type="text" onChange={(e)=>setname(e.target.value)}/>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-        <p>{error}</p>
-        </>
-    )
-}
-export default App;
+// const App =()=>{
+//     const [name,setname]=useState("");
+//     const [error,seterror]=useState("");
+//     const handleSubmit=()=>{
+//         if(name===""){
+//             seterror("name is mandatory");
+//         }
+//         else{
+//         alert("Added successfully");
+//         }
+//     }
+//     return(
+//         <>
+//         <input type="text" onChange={(e)=>setname(e.target.value)}/>
+//         <button type="submit" onClick={handleSubmit}>Submit</button>
+//         <p>{error}</p>
+//         </>
+//     )
+// }
+// export default App;
 
+
+
+
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+
+// const element = React.createElement(
+//   "ul",
+//   null,
+//   React.createElement("li", null, "Michael Jackson"),
+//   React.createElement("li", null, "The Weeknd"),
+//   React.createElement("li", null, "Shakira"),
+//   React.createElement("li", null, "Britney Spears")
+// );
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(element);
