@@ -783,25 +783,49 @@
 
 //normal counter app
 
+// import { useState } from "react";
+
+// function App(){
+//     const [count,setCount]=useState(0);
+
+//     const handlecount=(e)=>{
+//         if(e.target.name==="increment"){
+//             setCount(count+1);
+//         }
+//         else if(e.target.name==="decrement"){
+//             setCount(count-1);
+//         }
+//     }
+//     return(
+//         <div style={{ textAlign: "center", marginTop: "50px" }}>
+//             <h1>Counter: {count}</h1>
+//             <button name="increment" onClick={handlecount}>Increment</button>
+//             <button name="decrement" onClick={handlecount} style={{ marginLeft: "10px" }}>Decrement</button>
+//         </div>
+//     )
+// }
+// export default App;
+
+
+
 import { useState } from "react";
 
-function App(){
-    const [count,setCount]=useState(0);
+function App() {
+  const [show, setShow] = useState(true);
 
-    const handlecount=(e)=>{
-        if(e.target.name==="increment"){
-            setCount(count+1);
-        }
-        else if(e.target.name==="decrement"){
-            setCount(count-1);
-        }
-    }
-    return(
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <h1>Counter: {count}</h1>
-            <button name="increment" onClick={handlecount}>Increment</button>
-            <button name="decrement" onClick={handlecount} style={{ marginLeft: "10px" }}>Decrement</button>
-        </div>
-    )
+  const handleToggle = () => {
+    setShow(!show);
+  };
+
+  return (
+   <>
+      <button onClick={handleToggle}>
+        {show ? "Hide" : "Show"}
+      </button>
+
+      {show && <h1>Hello React</h1>}
+    </>
+  );
 }
+
 export default App;
