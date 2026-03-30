@@ -902,48 +902,80 @@
 
 
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-const App = () => {
-  const [data, setdata] = useState([]);
+// const App = () => {
+//   const [data, setdata] = useState([]);
 
-  const fetchData = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const result = await res.json();
-    setdata(result);
-  };
+//   const fetchData = async () => {
+//     const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//     const result = await res.json();
+//     setdata(result);
+//   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
 
-  return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>User Dashboard</h1>
+//   return (
+//     <div style={{ padding: "20px", fontFamily: "Arial" }}>
+//       <h1>User Dashboard</h1>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-        gap: "20px"
-      }}>
-        {data.map((user) => (
-          <div
-            key={user.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              padding: "15px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
-            }}
-          >
-            <h3>{user.name}</h3>
-            <p><b>Email:</b> {user.email}</p>
-            <p><b>City:</b> {user.address.city}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+//       <div style={{
+//         display: "grid",
+//         gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+//         gap: "20px"
+//       }}>
+//         {data.map((user) => (
+//           <div
+//             key={user.id}
+//             style={{
+//               border: "1px solid #ddd",
+//               borderRadius: "10px",
+//               padding: "15px",
+//               boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+//             }}
+//           >
+//             <h3>{user.name}</h3>
+//             <p><b>Email:</b> {user.email}</p>
+//             <p><b>City:</b> {user.address.city}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
+// export default App;
+
+
+
+
+
+
+//form validations
+
+
+import { useState } from "react";
+
+const App =()=>{
+    const [name,setname]=useState("");
+    const [error,seterror]=useState("");
+    const handleSubmit=()=>{
+        if(name===""){
+            seterror("name is mandatory");
+        }
+        else{
+        alert("Added successfully");
+        }
+    }
+    return(
+        <>
+        <input type="text" onChange={(e)=>setname(e.target.value)}/>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
+        <p>{error}</p>
+        </>
+    )
+}
 export default App;
+
