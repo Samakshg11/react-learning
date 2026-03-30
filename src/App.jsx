@@ -861,16 +861,39 @@
 
 //form and dashboard
 
-import {useState} from "react";
+// import {useState} from "react";
+// const App=()=>{
+//     const [name,setname]=useState("");
+//     const [email,setemail]=useState("");
+//     return(
+//         <>
+//         <input type="text" placeholder="Enter your name" value={name} onChange={(e)=>setname(e.target.value)}/>
+//         <input type="text" placeholder="Enter your email" value={email} onChange={(e)=>setemail(e.target.value)}/>
+//         <h2>{name}</h2>
+//         <h2>{email}</h2>
+//         </>
+//     )
+// }
+// export default App;
+
+
+import {useEffect, useState} from "react";
+
 const App=()=>{
-    const [name,setname]=useState("");
-    const [email,setemail]=useState("");
+    const [data,setdata]=useState([]);
+    const fetchData= async ()=>{
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        const result = await res.json();
+        setdata(result);
+    };
+    useEffect(()=>{
+        fetchData();
+    },[]);
     return(
         <>
-        <input type="text" placeholder="Enter your name" value={name} onChange={(e)=>setname(e.target.value)}/>
-        <input type="text" placeholder="Enter your email" value={email} onChange={(e)=>setemail(e.target.value)}/>
-        <h2>{name}</h2>
-        <h2>{email}</h2>
+        {data.map((user)=>(
+            <p key={user.id}>{user.name}</p>
+        ))}
         </>
     )
 }
