@@ -839,4 +839,20 @@
 import { useState } from "react";
 function App(){
     const [num1,setnum1]=useState("");
+    const [num2,setnum2]=useState("");
+    const [result,setResult]=useState(0);
+    return(
+        <>
+        <h1>Calculator</h1>
+        <input type="number" placeholder="Enter first number" value={num1} onChange={(e)=>setnum1(Number(e.target.value))}/>
+        <input type="number" placeholder="Enter second number" value={num2} onChange={(e)=>setnum2(Number(e.target.value))}/>
+        <br></br>
+        <button onClick={()=>setResult(num1+num2)}>Add</button>
+        <button onClick={()=>setResult(num1-num2)}>sub</button>
+        <button onClick={()=>setResult(num1*num2)}>multi</button>
+        <button onClick={()=>setResult(num1/num2)}>Div</button>
+        <h2>Result:{result}</h2>
+        </>
+    )
 }
+export default App;
