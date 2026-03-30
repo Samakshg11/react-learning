@@ -1,6 +1,7 @@
 // import { useState } from "react"
 // import { useEffect } from "react";
 
+
 // import { BrowserRouter, Route, useSearchParams } from "react-router-dom"
 
 
@@ -776,3 +777,31 @@
 // }
 
 // export default App;
+
+
+
+
+//normal counter app
+
+import { useState } from "react";
+
+function App(){
+    const [count,setCount]=useState(0);
+
+    const handlecount=(e)=>{
+        if(e.target.name==="increment"){
+            setCount(count+1);
+        }
+        else if(e.target.name==="decrement"){
+            setCount(count-1);
+        }
+    }
+    return(
+        <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <h1>Counter: {count}</h1>
+            <button name="increment" onClick={handlecount}>Increment</button>
+            <button name="decrement" onClick={handlecount} style={{ marginLeft: "10px" }}>Decrement</button>
+        </div>
+    )
+}
+export default App;
