@@ -836,22 +836,41 @@
 //calculator app 
 
 
-import { useState } from "react";
-function App(){
-    const [num1,setnum1]=useState("");
-    const [num2,setnum2]=useState("");
-    const [result,setResult]=useState(0);
+// import { useState } from "react";
+// function App(){
+//     const [num1,setnum1]=useState("");
+//     const [num2,setnum2]=useState("");
+//     const [result,setResult]=useState(0);
+//     return(
+//         <>
+//         <h1>Calculator</h1>
+//         <input type="number" placeholder="Enter first number" value={num1} onChange={(e)=>setnum1(Number(e.target.value))}/>
+//         <input type="number" placeholder="Enter second number" value={num2} onChange={(e)=>setnum2(Number(e.target.value))}/>
+//         <br></br>
+//         <button onClick={()=>setResult(num1+num2)}>Add</button>
+//         <button onClick={()=>setResult(num1-num2)}>sub</button>
+//         <button onClick={()=>setResult(num1*num2)}>multi</button>
+//         <button onClick={()=>setResult(num1/num2)}>Div</button>
+//         <h2>Result:{result}</h2>
+//         </>
+//     )
+// }
+// export default App;
+
+
+
+//form and dashboard
+
+import {useState} from "react";
+const App=()=>{
+    const [name,setname]=useState("");
+    const [email,setemail]=useState("");
     return(
         <>
-        <h1>Calculator</h1>
-        <input type="number" placeholder="Enter first number" value={num1} onChange={(e)=>setnum1(Number(e.target.value))}/>
-        <input type="number" placeholder="Enter second number" value={num2} onChange={(e)=>setnum2(Number(e.target.value))}/>
-        <br></br>
-        <button onClick={()=>setResult(num1+num2)}>Add</button>
-        <button onClick={()=>setResult(num1-num2)}>sub</button>
-        <button onClick={()=>setResult(num1*num2)}>multi</button>
-        <button onClick={()=>setResult(num1/num2)}>Div</button>
-        <h2>Result:{result}</h2>
+        <input type="text" placeholder="Enter your name" value={name} onChange={(e)=>setname(e.target.value)}/>
+        <input type="text" placeholder="Enter your email" value={email} onChange={(e)=>setemail(e.target.value)}/>
+        <h2>{name}</h2>
+        <h2>{email}</h2>
         </>
     )
 }
