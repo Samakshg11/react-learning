@@ -660,72 +660,72 @@
 // export default App;
 
 
-import { useRef } from "react";
-import "./App.css";
+// import { useRef } from "react";
+// import "./App.css";
 
-function App() {
-  const passwordRef = useRef();
-  const confirmRef = useRef();
+// function App() {
+//   const passwordRef = useRef();
+//   const confirmRef = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
 
-    if (passwordRef.current.value !== confirmRef.current.value) {
-      alert("Passwords do not match!");
-      return;
-    }
+//     if (passwordRef.current.value !== confirmRef.current.value) {
+//       alert("Passwords do not match!");
+//       return;
+//     }
 
-    alert("Form submitted successfully!");
-  };
+//     alert("Form submitted successfully!");
+//   };
 
-  return (
-    <div className="container">
-      <form onSubmit={handleSubmit} className="form">
-        <h2>Signup Form</h2>
+//   return (
+//     <div className="container">
+//       <form onSubmit={handleSubmit} className="form">
+//         <h2>Signup Form</h2>
 
-        {/* Username */}
-        <input
-          type="text"
-          placeholder="Username"
-          required
-          minLength="3"
-          maxLength="15"
-          pattern="[A-Za-z0-9]+"
-          title="Only letters and numbers allowed"
-        />
+//         {/* Username */}
+//         <input
+//           type="text"
+//           placeholder="Username"
+//           required
+//           minLength="3"
+//           maxLength="15"
+//           pattern="[A-Za-z0-9]+"
+//           title="Only letters and numbers allowed"
+//         />
 
-        {/* Email */}
-        <input
-          type="email"
-          placeholder="Email"
-          required
-        />
+//         {/* Email */}
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           required
+//         />
 
-        {/* Password */}
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          minLength="6"
-          ref={passwordRef}
-        />
+//         {/* Password */}
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           required
+//           minLength="6"
+//           ref={passwordRef}
+//         />
 
-        {/* Confirm Password */}
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          required
-          minLength="6"
-          ref={confirmRef}
-        />
+//         {/* Confirm Password */}
+//         <input
+//           type="password"
+//           placeholder="Confirm Password"
+//           required
+//           minLength="6"
+//           ref={confirmRef}
+//         />
 
-        <button type="submit">Register</button>
-      </form>
-    </div>
-  );
-}
+//         <button type="submit">Register</button>
+//       </form>
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
 
 
 
@@ -1131,3 +1131,68 @@ export default App;
 // }
 
 // export default UserCard;
+
+
+
+
+import {useState} from "react";
+import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {Provider, useDispatch, useSelector} from "react-redux";
+
+const todoSlice = createSlice({
+    name:"todo",
+    initialState:[],
+    reducers:{
+        addTodo:(state,action)=>{
+            state.push(action.payload);
+        },
+        removeTodo:(state,action)=>{
+            return state.filter((_,index)=>index!==action.payload);
+        }
+    }
+});
+const {addTodo,removeTodo}= todoSlice.actions;
+
+
+const store = configureStore({
+    reducer:{
+        todos:todoSlice.reducer
+    }
+});
+
+
+function App(){
+    const [input,setInput]=useState("");
+      const dispatch= useDispatch();
+      const todos = useSelector((state)=>state.todos);
+    const handleAdd=()=>{
+        if (input.trim()!==""){
+            dispatch(addTodo(input));
+            setInput("");
+        }
+    }
+    return(
+        <div style={{textAlign:"center", marginTop:"50px"}}>
+            <h1>Todo List</h1>
+            <input value={input} onChange={(e)=>setInput(e.target.value)} />
+            <button onClick={handleAdd}>Add Todo</button>
+            
+            <ul style={{listStyle:"none", padding:0}}>
+                {todos.map((todo,index)=>(
+                    <li key={index} style={{margin:"10px 0"}}>
+                        {todo}
+                        <button onClick={()=>dispatch(removeTodo(index))} style={{marginLeft:"10px"}}>Remove</button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+
+}
+export default function Main(){
+    return(
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    )
+}
