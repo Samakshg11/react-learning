@@ -996,3 +996,80 @@
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(element);
+
+
+// import React, { useRef } from "react";
+
+// function App() {
+//   const nameRef = useRef();
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(nameRef.current.value);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input ref={nameRef} type="text" />
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// }
+
+// export default App;
+
+
+// import { use, useRef } from "react";
+
+
+// function App(){
+//     const nameRef=useRef();
+//     const emailRef=useRef();
+//     const handleSubmit=(e)=>{
+//         e.preventDefault();
+//         console.log(`Name: ${nameRef.current.value}`);
+//         console.log(`Email: ${emailRef.current.value}`);
+//     }
+//     return(
+//         <form onSubmit={handleSubmit}>
+//             <input ref={nameRef} type="text" placeholder="Enter your name" />
+//             <input ref={emailRef} type="email" placeholder="Enter your email" />
+//             <button type="submit">Submit</button>
+//         </form>
+//     )
+// }
+// export default App;
+
+
+
+
+// import React from "react";
+
+// function App() {
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     const name = e.target.elements.name.value;
+//     const email = e.target.elements.email.value;
+
+//     console.log("Name:", name);
+//     console.log("Email:", email);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input type="text" name="name" placeholder="Enter Name" />
+//       <br /><br />
+//       <input type="email" name="email" placeholder="Enter Email" />
+//       <br /><br />
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// }
+
+// export default App;
+
+
+
+
