@@ -660,72 +660,72 @@
 // export default App;
 
 
-// import { useRef } from "react";
-// import "./App.css";
+import { useRef } from "react";
+import "./App.css";
 
-// function App() {
-//   const passwordRef = useRef();
-//   const confirmRef = useRef();
+function App() {
+  const passwordRef = useRef();
+  const confirmRef = useRef();
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-//     if (passwordRef.current.value !== confirmRef.current.value) {
-//       alert("Passwords do not match!");
-//       return;
-//     }
+    if (passwordRef.current.value !== confirmRef.current.value) {
+      alert("Passwords do not match!");
+      return;
+    }
 
-//     alert("Form submitted successfully!");
-//   };
+    alert("Form submitted successfully!");
+  };
 
-//   return (
-//     <div className="container">
-//       <form onSubmit={handleSubmit} className="form">
-//         <h2>Signup Form</h2>
+  return (
+    <div className="container">
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Signup Form</h2>
 
-//         {/* Username */}
-//         <input
-//           type="text"
-//           placeholder="Username"
-//           required
-//           minLength="3"
-//           maxLength="15"
-//           pattern="[A-Za-z0-9]+"
-//           title="Only letters and numbers allowed"
-//         />
+        {/* Username */}
+        <input
+          type="text"
+          placeholder="Username"
+          required
+          minLength="3"
+          maxLength="15"
+          pattern="[A-Za-z0-9]+"
+          title="Only letters and numbers allowed"
+        />
 
-//         {/* Email */}
-//         <input
-//           type="email"
-//           placeholder="Email"
-//           required
-//         />
+        {/* Email */}
+        <input
+          type="email"
+          placeholder="Email"
+          required
+        />
 
-//         {/* Password */}
-//         <input
-//           type="password"
-//           placeholder="Password"
-//           required
-//           minLength="6"
-//           ref={passwordRef}
-//         />
+        {/* Password */}
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          minLength="6"
+          ref={passwordRef}
+        />
 
-//         {/* Confirm Password */}
-//         <input
-//           type="password"
-//           placeholder="Confirm Password"
-//           required
-//           minLength="6"
-//           ref={confirmRef}
-//         />
+        {/* Confirm Password */}
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          required
+          minLength="6"
+          ref={confirmRef}
+        />
 
-//         <button type="submit">Register</button>
-//       </form>
-//     </div>
-//   );
-// }
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  );
+}
 
-// export default App;
+export default App;
 
 
 
@@ -1073,3 +1073,61 @@
 
 
 
+// Q1: TodoList with hooks + lifecycle logs
+
+// import { useState, useEffect } from "react";
+
+// function TodoList() {
+//   const [items, setItems] = useState([]);
+//   const [input, setInput] = useState("");
+
+//   useEffect(() => {
+//     console.log("Mounted");
+//     return () => {
+//       console.log("Unmounted");
+//     };
+//   }, []);
+
+//   const addItem = () => {
+//     if (input.trim() !== "") {
+//       setItems([...items, input]);
+//       setInput("");
+//     }
+//   };
+
+//   const removeItem = (index) => {
+//     const newItems = items.filter((_, i) => i !== index);
+//     setItems(newItems);
+//   };
+
+//   return (
+//     <>
+//       <input value={input} onChange={(e) => setInput(e.target.value)} />
+//       <button onClick={addItem}>Add</button>
+
+//       {items.map((item, index) => (
+//         <div key={index}>
+//           {item}
+//           <button onClick={() => removeItem(index)}>Remove</button>
+//         </div>
+//       ))}
+//     </>
+//   );
+// }
+
+// export default TodoList;
+
+
+// Q2: UserCard
+
+// function UserCard({ name, age, location }) {
+//   return (
+//     <div style={{ border: "1px solid black", padding: "10px", width: "200px" }}>
+//       <h3>{name}</h3>
+//       <p>Age: {age}</p>
+//       <p>Location: {location}</p>
+//     </div>
+//   );
+// }
+
+// export default UserCard;
