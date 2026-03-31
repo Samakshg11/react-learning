@@ -1019,26 +1019,26 @@
 // export default App;
 
 
-// import { use, useRef } from "react";
+import { use, useRef } from "react";
 
 
-// function App(){
-//     const nameRef=useRef();
-//     const emailRef=useRef();
-//     const handleSubmit=(e)=>{
-//         e.preventDefault();
-//         console.log(`Name: ${nameRef.current.value}`);
-//         console.log(`Email: ${emailRef.current.value}`);
-//     }
-//     return(
-//         <form onSubmit={handleSubmit}>
-//             <input ref={nameRef} type="text" placeholder="Enter your name" />
-//             <input ref={emailRef} type="email" placeholder="Enter your email" />
-//             <button type="submit">Submit</button>
-//         </form>
-//     )
-// }
-// export default App;
+function App(){
+    const nameRef=useRef();
+    const emailRef=useRef();
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        console.log(`Name: ${nameRef.current.value}`);
+        console.log(`Email: ${emailRef.current.value}`);
+    }
+    return(
+        <form onSubmit={handleSubmit}>
+            <input ref={nameRef} type="text" placeholder="Enter your name" />
+            <input ref={emailRef} type="email" placeholder="Enter your email" />
+            <button type="submit">Submit</button>
+        </form>
+    )
+}
+export default App;
 
 
 
