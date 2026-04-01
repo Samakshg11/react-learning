@@ -1135,68 +1135,68 @@
 
 
 
-import {useState} from "react";
-import {configureStore, createSlice} from "@reduxjs/toolkit";
-import {Provider, useDispatch, useSelector} from "react-redux";
+// import {useState} from "react";
+// import {configureStore, createSlice} from "@reduxjs/toolkit";
+// import {Provider, useDispatch, useSelector} from "react-redux";
 
-const todoSlice = createSlice({
-    name:"todo",
-    initialState:[],
-    reducers:{
-        addTodo:(state,action)=>{
-            state.push(action.payload);
-        },
-        removeTodo:(state,action)=>{
-            return state.filter((_,index)=>index!==action.payload);
-        }
-    }
-});
-const {addTodo,removeTodo}= todoSlice.actions;
+// const todoSlice = createSlice({
+//     name:"todo",
+//     initialState:[],
+//     reducers:{
+//         addTodo:(state,action)=>{
+//             state.push(action.payload);
+//         },
+//         removeTodo:(state,action)=>{
+//             return state.filter((_,index)=>index!==action.payload);
+//         }
+//     }
+// });
+// const {addTodo,removeTodo}= todoSlice.actions;
 
 
-const store = configureStore({
-    reducer:{
-        todos:todoSlice.reducer
-    }
-});
-function App(){
-    const [input,setInput]=useState("");
-    const todos = useSelector((state)=>state.todos);
-      const dispatch= useDispatch();
-    const handleAdd=()=>{
-        if (input.trim()!==""){
-            dispatch(addTodo(input));
-            setInput("");
-        }
-    }
-    const handleremove=(index)=>{
-        dispatch(removeTodo(index));
-    }
-    return(
-        <div style={{textAlign:"center", marginTop:"50px"}}>
-            <h1>Todo List</h1>
-            <input value={input} onChange={(e)=>setInput(e.target.value)} />
-            <button onClick={handleAdd}>Add Todo</button>
+// const store = configureStore({
+//     reducer:{
+//         todos:todoSlice.reducer
+//     }
+// });
+// function App(){
+//     const [input,setInput]=useState("");
+//     const todos = useSelector((state)=>state.todos);
+//       const dispatch= useDispatch();
+//     const handleAdd=()=>{
+//         if (input.trim()!==""){
+//             dispatch(addTodo(input));
+//             setInput("");
+//         }
+//     }
+//     const handleremove=(index)=>{
+//         dispatch(removeTodo(index));
+//     }
+//     return(
+//         <div style={{textAlign:"center", marginTop:"50px"}}>
+//             <h1>Todo List</h1>
+//             <input value={input} onChange={(e)=>setInput(e.target.value)} />
+//             <button onClick={handleAdd}>Add Todo</button>
             
-            <ul style={{listStyle:"none", padding:0}}>
-                {todos.map((todo,index)=>(
-                    <li key={index} style={{margin:"10px 0"}}>
-                        {todo}
-                        <button onClick={()=>handleremove(index)} style={{marginLeft:"10px"}}>Remove</button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
+//             <ul style={{listStyle:"none", padding:0}}>
+//                 {todos.map((todo,index)=>(
+//                     <li key={index} style={{margin:"10px 0"}}>
+//                         {todo}
+//                         <button onClick={()=>handleremove(index)} style={{marginLeft:"10px"}}>Remove</button>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     )
 
-}
-export default function Main(){
-    return(
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    )
-}
+// }
+// export default function Main(){
+//     return(
+//         <Provider store={store}>
+//             <App/>
+//         </Provider>
+//     )
+// }
 
 
 // import { useState } from "react";
@@ -1240,3 +1240,80 @@ export default function Main(){
 // }
 
 // export default App;
+
+
+
+
+
+import PropTypes from "prop-types";
+
+// HotelInfo Component
+const HotelInfo = ({ name, address, rooms }) => {
+  const handleBook = () => {
+    alert("Booked: ");
+  };
+
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>{address}</p>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Room Type</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rooms.map((room, index) => (
+            <tr key={index}>
+              <td>{room.type}</td>
+              <td>{room.price}</td>
+              <td>
+                <button onClick={() => handleBook()}>
+                  Book Now
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+// PropTypes validation
+HotelInfo.propTypes = {
+  name: PropTypes.string,
+  address: PropTypes.string,
+  rooms: PropTypes.array
+};
+
+// App Component
+function App() {
+  const hotelData = {
+    name: "Grand Hotel",
+    address: "Delhi",
+    rooms: [
+      { type: "Single", price: 1000 },
+      { type: "Double", price: 2000 },
+      { type: "Suite", price: 5000 },
+      { type: "Deluxe", price: 3000 }
+    ]
+  };
+
+  return (
+    <div>
+      <HotelInfo
+        name={hotelData.name}
+        address={hotelData.address}
+        rooms={hotelData.rooms}
+      />
+    </div>
+  );
+}
+
+export default App;
