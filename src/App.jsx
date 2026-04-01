@@ -1509,18 +1509,102 @@
 
 
 
-import{useState} from "react";
+// import{useState} from "react";
 
-const App=()=>{
+// const App=()=>{
+//     const [count,setcount]=useState(0);
+
+//     return(
+//         <>
+//         <h1>Counter</h1>
+//         <button onClick={()=>setcount(prev=>prev-1)}>-</button>
+//         <button onClick={()=>setcount(prev=>prev+1)}>+</button>
+//         <p>{count}</p>
+//         </>
+//     )
+// }
+// export default App;
+
+
+// import React, { useState, useEffect } from "react";
+
+// function App() {
+//   const [count, setCount] = useState(0);
+//   const [show, setShow] = useState(true);
+
+//   return (
+//     <div>
+//       <button onClick={() => setShow(!show)}>
+//         Toggle Component
+//       </button>
+
+//       {show && <Counter />}
+//     </div>
+//   );
+// }
+
+// function Counter() {
+//   const [count, setCount] = useState(0);
+
+//   // 1. Mount
+//   useEffect(() => {
+//     console.log("Component Mounted");
+
+//     return () => {
+//       console.log("Component Unmounted");
+//     };
+//   }, []);
+
+//   // 2. Update
+//   useEffect(() => {
+//     console.log("Component Updated");
+//   }, [count]);
+
+//   return (
+//     <div>
+//       <h2>Count: {count}</h2>
+
+//       <button onClick={() => setCount(count + 1)}>
+//         Increment
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+import{useState,useEffect} from "react";
+
+function App(){
     const [count,setcount]=useState(0);
+    const [show,setshow]=useState(false);
+    return(
+        <>
+        <button onClick={()=>setshow(!show)}>Toggle Component</button>
+        {show && <Counter/>}
+        </>
+    );
+}
+export default App;
+function Counter(){
+    const [count,setcount]=useState(0);
+    useEffect(()=>{
+        console.log("Mounted");
+        return ()=>{
+            console.log("Unmounted");
+        };
+    },[]);
+
+    useEffect(()=>{
+        console.log("Updated");
+    },[count]);
 
     return(
         <>
-        <h1>Counter</h1>
-        <button onClick={()=>setcount(prev=>prev-1)}>-</button>
-        <button onClick={()=>setcount(prev=>prev+1)}>+</button>
-        <p>{count}</p>
+        <h1>Count: {count}</h1>
+        <button onClick={()=>setcount(prev=>prev+1)}>Increment</button>
         </>
     )
 }
-export default App;
