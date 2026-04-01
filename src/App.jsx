@@ -1575,10 +1575,9 @@
 
 
 
-import{useState,useEffect} from "react";
+import{useState,useEffect,useRef} from "react";
 
 function App(){
-    const [count,setcount]=useState(0);
     const [show,setshow]=useState(false);
     return(
         <>
@@ -1590,6 +1589,7 @@ function App(){
 export default App;
 function Counter(){
     const [count,setcount]=useState(0);
+     const isFirst = useRef(true);
     useEffect(()=>{
         console.log("Mounted");
         return ()=>{
@@ -1598,6 +1598,10 @@ function Counter(){
     },[]);
 
     useEffect(()=>{
+        if(isFirst.current){
+            isFirst.current=false;
+            return;
+        }
         console.log("Updated");
     },[count]);
 
