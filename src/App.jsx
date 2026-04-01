@@ -1575,40 +1575,74 @@
 
 
 
-import{useState,useEffect,useRef} from "react";
+// import{useState,useEffect,useRef} from "react";
+
+// function App(){
+//     const [show,setshow]=useState(false);
+//     return(
+//         <>
+//         <button onClick={()=>setshow(!show)}>Toggle Component</button>
+//         {show && <Counter/>}
+//         </>
+//     );
+// }
+// export default App;
+// function Counter(){
+//     const [count,setcount]=useState(0);
+//      const isFirst = useRef(true);
+//     useEffect(()=>{
+//         console.log("Mounted");
+//         return ()=>{
+//             console.log("Unmounted");
+//         };
+//     },[]);
+
+//     useEffect(()=>{
+//         if(isFirst.current){
+//             isFirst.current=false;
+//             return;
+//         }
+//         console.log("Updated");
+//     },[count]);
+
+//     return(
+//         <>
+//         <h1>Count: {count}</h1>
+//         <button onClick={()=>setcount(prev=>prev+1)}>Increment</button>
+//         </>
+//     )
+// }
+
+
+
+import {useEffect, useState} from "react";
 
 function App(){
-    const [show,setshow]=useState(false);
-    return(
-        <>
-        <button onClick={()=>setshow(!show)}>Toggle Component</button>
-        {show && <Counter/>}
-        </>
-    );
-}
-export default App;
-function Counter(){
-    const [count,setcount]=useState(0);
-     const isFirst = useRef(true);
+    const [data,setdata]=useState([]);
     useEffect(()=>{
-        console.log("Mounted");
-        return ()=>{
-            console.log("Unmounted");
-        };
-    },[]);
-
-    useEffect(()=>{
-        if(isFirst.current){
-            isFirst.current=false;
-            return;
+        console.log("Component Mounted");
+        const fetchData=async()=>{
+            try{
+            const res = await fetch ("https://jsonplaceholder.typicode.com/posts");
+            const result = await res.json();
+            setdata(result);
         }
-        console.log("Updated");
-    },[count]);
-
+        catch(err){
+            console.error(err);
+        }
+        };
+        fetchData();
+        return()=>{
+            console.log("Component Unmounted");
+        }
+    },[])
     return(
         <>
-        <h1>Count: {count}</h1>
-        <button onClick={()=>setcount(prev=>prev+1)}>Increment</button>
+        <h1>Posts</h1>
+        {data.map((item)=>(
+            <p key={item.id}>{item.title}</p>
+        ))}  
         </>
     )
 }
+export default App;
