@@ -1456,53 +1456,53 @@
 
 
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-function App(){
-    const Hotel={
-        name:"Sam Hotel",
-        address:"Kichha",
-        rooms:[
-            {type:"Single",price:10000},
-            {type:"Double",price:15000},
-            {type:"Honeymoon",price:20000},
-        ]
-    };
-    return (
-        <HotelInfo data={Hotel}/>
-    )
-}
-function HotelInfo({data}){
-    return(
-        <div>
-            <h2>{data.name}</h2>
-            <p>{data.address}</p>
+// function App(){
+//     const Hotel={
+//         name:"Sam Hotel",
+//         address:"Kichha",
+//         rooms:[
+//             {type:"Single",price:10000},
+//             {type:"Double",price:15000},
+//             {type:"Honeymoon",price:20000},
+//         ]
+//     };
+//     return (
+//         <HotelInfo data={Hotel}/>
+//     )
+// }
+// function HotelInfo({data}){
+//     return(
+//         <div>
+//             <h2>{data.name}</h2>
+//             <p>{data.address}</p>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Room Type</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.rooms.map((room,index)=>(
-                        <tr key={index}>
-                            <td>{room.type}</td>
-                            <td>{room.price}</td>
-                            <td>
-                                <button onClick={()=>alert(`Room Booked :${room.type}`)}>Book Now</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}
+//             <table border="1">
+//                 <thead>
+//                     <tr>
+//                         <th>Room Type</th>
+//                         <th>Price</th>
+//                         <th>Action</th>
+//                     </tr>
+//                 </thead>
+//                 <tbody>
+//                     {data.rooms.map((room,index)=>(
+//                         <tr key={index}>
+//                             <td>{room.type}</td>
+//                             <td>{room.price}</td>
+//                             <td>
+//                                 <button onClick={()=>alert(`Room Booked :${room.type}`)}>Book Now</button>
+//                             </td>
+//                         </tr>
+//                     ))}
+//                 </tbody>
+//             </table>
+//         </div>
+//     );
+// }
 
-HotelInfo.propTypes={
-    data:PropTypes.object
-};
-export default App;
+// HotelInfo.propTypes={
+//     data:PropTypes.object
+// };
+// export default App;
