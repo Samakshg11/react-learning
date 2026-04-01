@@ -1161,8 +1161,8 @@ const store = configureStore({
 });
 function App(){
     const [input,setInput]=useState("");
+    const todos = useSelector((state)=>state.todos);
       const dispatch= useDispatch();
-      const todos = useSelector((state)=>state.todos);
     const handleAdd=()=>{
         if (input.trim()!==""){
             dispatch(addTodo(input));
