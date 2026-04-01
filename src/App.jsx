@@ -1245,73 +1245,132 @@
 
 
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-// HotelInfo Component
-const HotelInfo = ({ name, address, rooms }) => {
-  const handleBook = () => {
-    alert("Booked: ");
-  };
+// // HotelInfo Component
+// const HotelInfo = ({ name, address, rooms }) => {
+//   const handleBook = () => {
+//     alert("Booked: ");
+//   };
 
-  return (
-    <div>
-      <h2>{name}</h2>
-      <p>{address}</p>
+//   return (
+//     <div>
+//       <h2>{name}</h2>
+//       <p>{address}</p>
 
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Room Type</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+//       <table border="1">
+//         <thead>
+//           <tr>
+//             <th>Room Type</th>
+//             <th>Price</th>
+//             <th>Action</th>
+//           </tr>
+//         </thead>
 
-        <tbody>
-          {rooms.map((room, index) => (
-            <tr key={index}>
-              <td>{room.type}</td>
-              <td>{room.price}</td>
-              <td>
-                <button onClick={() => handleBook()}>
-                  Book Now
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+//         <tbody>
+//           {rooms.map((room, index) => (
+//             <tr key={index}>
+//               <td>{room.type}</td>
+//               <td>{room.price}</td>
+//               <td>
+//                 <button onClick={() => handleBook()}>
+//                   Book Now
+//                 </button>
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
 
-// PropTypes validation
-HotelInfo.propTypes = {
-  name: PropTypes.string,
-  address: PropTypes.string,
-  rooms: PropTypes.array
-};
+// // PropTypes validation
+// HotelInfo.propTypes = {
+//   name: PropTypes.string,
+//   address: PropTypes.string,
+//   rooms: PropTypes.array
+// };
 
-// App Component
+// // App Component
+// function App() {
+//   const hotelData = {
+//     name: "Grand Hotel",
+//     address: "Delhi",
+//     rooms: [
+//       { type: "Single", price: 1000 },
+//       { type: "Double", price: 2000 },
+//       { type: "Suite", price: 5000 },
+//       { type: "Deluxe", price: 3000 }
+//     ]
+//   };
+
+//   return (
+//     <div>
+//       <HotelInfo
+//         name={hotelData.name}
+//         address={hotelData.address}
+//         rooms={hotelData.rooms}
+//       />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+import React, { useState } from "react";
+
 function App() {
-  const hotelData = {
-    name: "Grand Hotel",
-    address: "Delhi",
-    rooms: [
-      { type: "Single", price: 1000 },
-      { type: "Double", price: 2000 },
-      { type: "Suite", price: 5000 },
-      { type: "Deluxe", price: 3000 }
-    ]
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMessage("Welcome " + name);
+  };
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
   };
 
   return (
-    <div>
-      <HotelInfo
-        name={hotelData.name}
-        address={hotelData.address}
-        rooms={hotelData.rooms}
-      />
+    <div style={{
+      backgroundColor: darkMode ? "black" : "white",
+      color: darkMode ? "white" : "black",
+      height: "100vh",
+      padding: "20px"
+    }}>
+      
+      <h2>Form</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <br /><br />
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br /><br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <h3>{message}</h3>
+
+      <button onClick={toggleTheme}>
+        Toggle Theme
+      </button>
     </div>
   );
 }
