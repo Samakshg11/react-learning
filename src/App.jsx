@@ -1135,105 +1135,108 @@
 
 
 
-// import {useState} from "react";
-// import {configureStore, createSlice} from "@reduxjs/toolkit";
-// import {Provider, useDispatch, useSelector} from "react-redux";
+import {useState} from "react";
+import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {Provider, useDispatch, useSelector} from "react-redux";
 
-// const todoSlice = createSlice({
-//     name:"todo",
-//     initialState:[],
-//     reducers:{
-//         addTodo:(state,action)=>{
-//             state.push(action.payload);
-//         },
-//         removeTodo:(state,action)=>{
-//             return state.filter((_,index)=>index!==action.payload);
-//         }
-//     }
-// });
-// const {addTodo,removeTodo}= todoSlice.actions;
-
-
-// const store = configureStore({
-//     reducer:{
-//         todos:todoSlice.reducer
-//     }
-// });
-// function App(){
-//     const [input,setInput]=useState("");
-//     const todos = useSelector((state)=>state.todos);
-//       const dispatch= useDispatch();
-//     const handleAdd=()=>{
-//         if (input.trim()!==""){
-//             dispatch(addTodo(input));
-//             setInput("");
-//         }
-//     }
-//     return(
-//         <div style={{textAlign:"center", marginTop:"50px"}}>
-//             <h1>Todo List</h1>
-//             <input value={input} onChange={(e)=>setInput(e.target.value)} />
-//             <button onClick={handleAdd}>Add Todo</button>
-            
-//             <ul style={{listStyle:"none", padding:0}}>
-//                 {todos.map((todo,index)=>(
-//                     <li key={index} style={{margin:"10px 0"}}>
-//                         {todo}
-//                         <button onClick={()=>dispatch(removeTodo(index))} style={{marginLeft:"10px"}}>Remove</button>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     )
-
-// }
-// export default function Main(){
-//     return(
-//         <Provider store={store}>
-//             <App/>
-//         </Provider>
-//     )
-// }
+const todoSlice = createSlice({
+    name:"todo",
+    initialState:[],
+    reducers:{
+        addTodo:(state,action)=>{
+            state.push(action.payload);
+        },
+        removeTodo:(state,action)=>{
+            return state.filter((_,index)=>index!==action.payload);
+        }
+    }
+});
+const {addTodo,removeTodo}= todoSlice.actions;
 
 
-import { useState } from "react";
-
-function App() {
-    const [input, setInput] = useState("");
-    const [todos, setTodos] = useState([]);
-
-    const handleAdd = () => {
-        if (input.trim() !== "") {
-            setTodos([...todos, input]);
+const store = configureStore({
+    reducer:{
+        todos:todoSlice.reducer
+    }
+});
+function App(){
+    const [input,setInput]=useState("");
+    const todos = useSelector((state)=>state.todos);
+      const dispatch= useDispatch();
+    const handleAdd=()=>{
+        if (input.trim()!==""){
+            dispatch(addTodo(input));
             setInput("");
         }
-    };
-
-    const handleRemove = (index) => {
-        setTodos(todos.filter((_, i) => i !== index));
-    };
-
-    return (
-        <div>
+    }
+    const handleremove=(index)=>{
+        dispatch(removeTodo(index));
+    }
+    return(
+        <div style={{textAlign:"center", marginTop:"50px"}}>
             <h1>Todo List</h1>
-            <input 
-                value={input} 
-                onChange={(e) => setInput(e.target.value)} 
-            />
+            <input value={input} onChange={(e)=>setInput(e.target.value)} />
             <button onClick={handleAdd}>Add Todo</button>
-
-            <ul>
-                {todos.map((todo, index) => (
-                    <li key={index}>
+            
+            <ul style={{listStyle:"none", padding:0}}>
+                {todos.map((todo,index)=>(
+                    <li key={index} style={{margin:"10px 0"}}>
                         {todo}
-                        <button onClick={() => handleRemove(index)}>
-                            Remove
-                        </button>
+                        <button onClick={()=>handleremove(index)} style={{marginLeft:"10px"}}>Remove</button>
                     </li>
                 ))}
             </ul>
         </div>
-    );
+    )
+
+}
+export default function Main(){
+    return(
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    )
 }
 
-export default App;
+
+// import { useState } from "react";
+
+// function App() {
+//     const [input, setInput] = useState("");
+//     const [todos, setTodos] = useState([]);
+
+//     const handleAdd = () => {
+//         if (input.trim() !== "") {
+//             setTodos([...todos, input]);
+//             setInput("");
+//         }
+//     };
+
+//     const handleRemove = (index) => {
+//         setTodos(todos.filter((_, i) => i !== index));
+//     };
+
+//     return (
+//         <div>
+//             <h1>Todo List</h1>
+//             <input 
+//                 value={input} 
+//                 onChange={(e) => setInput(e.target.value)} 
+//             />
+//             <button onClick={handleAdd}>Add Todo</button>
+
+//             <ul>
+//                 {todos.map((todo, index) => (
+//                     <li key={index}>
+//                         {todo}
+//                         <button onClick={() => handleRemove(index)}>
+//                             Remove
+//                         </button>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// }
+
+// export default App;
