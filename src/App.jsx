@@ -1319,60 +1319,137 @@
 // export default App;
 
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+// function App() {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [message, setMessage] = useState("");
+//   const [darkMode, setDarkMode] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setMessage("Welcome " + name);
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setMessage("Welcome " + name);
+//   };
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+//   const toggleTheme = () => {
+//     setDarkMode(!darkMode);
+//   };
 
-  return (
-    <div style={{
-      backgroundColor: darkMode ? "black" : "white",
-      color: darkMode ? "white" : "black",
-      height: "100vh",
-      padding: "20px"
-    }}>
+//   return (
+//     <div style={{
+//       backgroundColor: darkMode ? "black" : "white",
+//       color: darkMode ? "white" : "black",
+//       height: "100vh",
+//       padding: "20px"
+//     }}>
       
-      <h2>Form</h2>
+//       <h2>Form</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br /><br />
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           placeholder="Enter Name"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+//         <br /><br />
 
-        <input
-          type="email"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br /><br />
+//         <input
+//           type="email"
+//           placeholder="Enter Email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//         <br /><br />
 
-        <button type="submit">Submit</button>
-      </form>
+//         <button type="submit">Submit</button>
+//       </form>
 
-      <h3>{message}</h3>
+//       <h3>{message}</h3>
 
-      <button onClick={toggleTheme}>
-        Toggle Theme
-      </button>
-    </div>
-  );
+//       <button onClick={toggleTheme}>
+//         Toggle Theme
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+// import { createContext, useContext, useState } from "react";
+
+// // 1. Context create kiya
+// const AuthContext = createContext();
+
+// function App() {
+//   // 2. Login state
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+//   // 3. Login function
+//   const login = () => {
+//     setIsAuthenticated(true);
+//   };
+
+//   // 4. Logout function
+//   const logout = () => {
+//     setIsAuthenticated(false);
+//   };
+
+//   return (
+//     // 5. Provider se data share kiya
+//     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+//       <Home />
+//     </AuthContext.Provider>
+//   );
+// }
+
+// // 6. Dusra component jo data use karega
+// function Home() {
+//   const { isAuthenticated, login, logout } = useContext(AuthContext);
+
+//   return (
+//     <div>
+//       <h2>{isAuthenticated ? "Logged In" : "Logged Out"}</h2>
+
+//       <button onClick={login}>Login</button>
+//       <button onClick={logout}>Logout</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+import{useState,useContext,createContext} from "react";
+
+const AuthContext = createContext();
+const App = ()=>{
+    const [isAuthenticated,setisAuthenticated]= useState(false);
+    const login=()=>{
+        setisAuthenticated(true);
+    }
+    const logout=()=>{
+        setisAuthenticated(false);
+    }
+    return(
+        <AuthContext.Provider value={{isAuthenticated,login,logout}}>
+        <Home/>
+        </AuthContext.Provider>
+    );
+}
+export default App;
+
+function Home(){
+    const {isAuthenticated,login,logout}=useContext(AuthContext);
+    return(
+        <div>
+            <h2>{isAuthenticated?"Logged in":"Logged out"}</h2>
+            <button onClick={login}>Login</button>
+            <button onClick={logout}>Logout</button>
+        </div>
+    )
 }
 
-export default App;
