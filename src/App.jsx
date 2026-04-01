@@ -1159,8 +1159,6 @@ const store = configureStore({
         todos:todoSlice.reducer
     }
 });
-
-
 function App(){
     const [input,setInput]=useState("");
       const dispatch= useDispatch();
