@@ -1506,3 +1506,21 @@
 //     data:PropTypes.object
 // };
 // export default App;
+
+
+
+import{useState} from "react";
+
+const App=()=>{
+    const [count,setcount]=useState(0);
+
+    return(
+        <>
+        <h1>Counter</h1>
+        <button onClick={()=>setcount(prev=>prev-1)}>-</button>
+        <button onClick={()=>setcount(prev=>prev+1)}>+</button>
+        <p>{count}</p>
+        </>
+    )
+}
+export default App;
