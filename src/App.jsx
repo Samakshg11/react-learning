@@ -1648,81 +1648,115 @@
 // export default App;
 
 
+// import { useState } from "react";
+
+// function App() {
+//   const [formData, setFormData] = useState({
+//     title: "",
+//     body: ""
+//   });
+
+//   const [responseData, setResponseData] = useState(null);
+
+//   const handleChange = (e) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(formData)
+//       });
+
+//       const data = await res.json();
+
+//       console.log(data);
+//       setResponseData(data);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <h2>POST Form</h2>
+
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           name="title"
+//           placeholder="Enter title"
+//           value={formData.title}
+//           onChange={handleChange}
+//         />
+
+//         <br /><br />
+
+//         <input
+//           type="text"
+//           name="body"
+//           placeholder="Enter body"
+//           value={formData.body}
+//           onChange={handleChange}
+//         />
+
+//         <br /><br />
+
+//         <button type="submit">Submit</button>
+//       </form>
+
+//       {responseData && (
+//         <div>
+//           <h3>Submitted Data:</h3>
+//           <p><b>Title:</b> {responseData.title}</p>
+//           <p><b>Body:</b> {responseData.body}</p>
+//         </div>
+//       )}
+//     </>
+//   );
+// }
+
+// export default App;
+
+
+
 import { useState } from "react";
 
 function App() {
-  const [formData, setFormData] = useState({
-    title: "",
-    body: ""
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [dark, setDark] = useState(false);
+  const [msg, setMsg] = useState("");
 
-  const [responseData, setResponseData] = useState(null);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await res.json();
-
-      console.log(data);
-      setResponseData(data);
-    } catch (error) {
-      console.error(error);
-    }
+  const handleSubmit = () => {
+    setMsg(`Welcome ${name}`);
   };
 
   return (
-    <>
-      <h2>POST Form</h2>
+    <div style={{
+      background: dark ? "black" : "white",
+      color: dark ? "white" : "black",
+      height: "100vh"
+    }}>
+      <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Name" />
+      <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Enter title"
-          value={formData.title}
-          onChange={handleChange}
-        />
+      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={()=>setDark(!dark)}>Toggle Theme</button>
 
-        <br /><br />
-
-        <input
-          type="text"
-          name="body"
-          placeholder="Enter body"
-          value={formData.body}
-          onChange={handleChange}
-        />
-
-        <br /><br />
-
-        <button type="submit">Submit</button>
-      </form>
-
-      {responseData && (
-        <div>
-          <h3>Submitted Data:</h3>
-          <p><b>Title:</b> {responseData.title}</p>
-          <p><b>Body:</b> {responseData.body}</p>
-        </div>
-      )}
-    </>
+      <h3>{msg}</h3>
+    </div>
   );
 }
+
 
 export default App;
