@@ -1615,34 +1615,114 @@
 
 
 
-import {useEffect, useState} from "react";
+// import {useEffect, useState} from "react";
 
-function App(){
-    const [data,setdata]=useState([]);
-    useEffect(()=>{
-        console.log("Component Mounted");
-        const fetchData=async()=>{
-            try{
-            const res = await fetch ("https://jsonplaceholder.typicode.com/posts");
-            const result = await res.json();
-            setdata(result);
-        }
-        catch(err){
-            console.error(err);
-        }
-        };
-        fetchData();
-        return()=>{
-            console.log("Component Unmounted");
-        }
-    },[])
-    return(
-        <>
-        <h1>Posts</h1>
-        {data.map((item)=>(
-            <p key={item.id}>{item.title}</p>
-        ))}  
-        </>
-    )
+// function App(){
+//     const [data,setdata]=useState([]);
+//     useEffect(()=>{
+//         console.log("Component Mounted");
+//         const fetchData=async()=>{
+//             try{
+//             const res = await fetch ("https://jsonplaceholder.typicode.com/posts");
+//             const result = await res.json();
+//             setdata(result);
+//         }
+//         catch(err){
+//             console.error(err);
+//         }
+//         };
+//         fetchData();
+//         return()=>{
+//             console.log("Component Unmounted");
+//         }
+//     },[])
+//     return(
+//         <>
+//         <h1>Posts</h1>
+//         {data.map((item)=>(
+//             <p key={item.id}>{item.title}</p>
+//         ))}  
+//         </>
+//     )
+// }
+// export default App;
+
+
+import { useState } from "react";
+
+function App() {
+  const [formData, setFormData] = useState({
+    title: "",
+    body: ""
+  });
+
+  const [responseData, setResponseData] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      console.log(data);
+      setResponseData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <>
+      <h2>POST Form</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+
+        <br /><br />
+
+        <input
+          type="text"
+          name="body"
+          placeholder="Enter body"
+          value={formData.body}
+          onChange={handleChange}
+        />
+
+        <br /><br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      {responseData && (
+        <div>
+          <h3>Submitted Data:</h3>
+          <p><b>Title:</b> {responseData.title}</p>
+          <p><b>Body:</b> {responseData.body}</p>
+        </div>
+      )}
+    </>
+  );
 }
+
 export default App;
