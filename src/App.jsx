@@ -1821,27 +1821,123 @@
 // }
 // export default App;
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "../components/Home";
-import About from "../components/About";
-import Contact from "../components/Contact";
+// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// import Home from "../components/Home";
+// import About from "../components/About";
+// import Contact from "../components/Contact";
+
+// function App() {
+//   return (
+//     <Router>
+//       <nav style={{ display: "flex", gap: "20px" }}>
+//         <Link to="/">Home</Link>
+//         <Link to="/About">About</Link>
+//         <Link to="/contact">Contact</Link>
+//       </nav>
+
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/About" element={<About />} />
+//         <Route path="/contact" element={<Contact />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+import { createContext, useContext, useState } from "react";
+
+// 1. Context create kiya
+const AuthContext = createContext();
 
 function App() {
-  return (
-    <Router>
-      <nav style={{ display: "flex", gap: "20px" }}>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
+  // 2. Login state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+  // 3. Login function
+  const login = () => {
+    setIsAuthenticated(true);
+  };
+
+  // 4. Logout function
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
+
+  return (
+    // 5. Provider se data share kiya
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+      <Home />
+    </AuthContext.Provider>
+  );
+}
+
+// 6. Dusra component jo data use karega
+function Home() {
+  const { isAuthenticated, login, logout } = useContext(AuthContext);
+
+  return (
+    <div>
+      <h2>{isAuthenticated ? "Logged In" : "Logged Out"}</h2>
+
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
+    </div>
   );
 }
 
 export default App;
+
+
+
+import PropTypes from "prop-types";
+
+// function App(){
+//     const Hotel={
+//         name:"Sam Hotel",
+//         address:"Kichha",
+//         rooms:[
+//             {type:"Single",price:10000},
+//             {type:"Double",price:15000},
+//             {type:"Honeymoon",price:20000},
+//         ]
+//     };
+//     return (
+//         <HotelInfo data={Hotel}/>
+//     )
+// }
+// function HotelInfo({data}){
+//     return(
+//         <div>
+//             <h2>{data.name}</h2>
+//             <p>{data.address}</p>
+
+//             <table border="1">
+//                 <thead>
+//                     <tr>
+//                         <th>Room Type</th>
+//                         <th>Price</th>
+//                         <th>Action</th>
+//                     </tr>
+//                 </thead>
+//                 <tbody>
+//                     {data.rooms.map((room,index)=>(
+//                         <tr key={index}>
+//                             <td>{room.type}</td>
+//                             <td>{room.price}</td>
+//                             <td>
+//                                 <button onClick={()=>alert(`Room Booked :${room.type}`)}>Book Now</button>
+//                             </td>
+//                         </tr>
+//                     ))}
+//                 </tbody>
+//             </table>
+//         </div>
+//     );
+// }
+
+// HotelInfo.propTypes={
+//     data:PropTypes.object
+// };
+// export default App;
