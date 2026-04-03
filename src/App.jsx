@@ -745,6 +745,7 @@
 //   }
 //   alert("Form submitted successfully!");
 //   }
+
 //   return(
 //     <div className="container">
 //       <form onSubmit={handleSubmit}>
@@ -758,7 +759,6 @@
 //       </form>
 //     </div>
 //   )
-
 // }
 // export default App;
 
@@ -1729,34 +1729,94 @@
 
 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dark, setDark] = useState(false);
-  const [msg, setMsg] = useState("");
+// function App() {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [dark, setDark] = useState(false);
+//   const [msg, setMsg] = useState("");
 
-  const handleSubmit = () => {
-    setMsg(`Welcome ${name}`);
-  };
+//   const handleSubmit = () => {
+//     setMsg(`Welcome ${name}`);
+//   };
 
-  return (
-    <div style={{
-      background: dark ? "black" : "white",
-      color: dark ? "white" : "black",
-      height: "100vh"
-    }}>
-      <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Name" />
-      <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" />
+//   return (
+//     <div style={{
+//       background: dark ? "black" : "white",
+//       color: dark ? "white" : "black",
+//       height: "100vh"
+//     }}>
+//       <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Name" />
+//       <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" />
 
-      <button onClick={handleSubmit}>Submit</button>
-      <button onClick={()=>setDark(!dark)}>Toggle Theme</button>
+//       <button onClick={handleSubmit}>Submit</button>
+//       <button onClick={()=>setDark(!dark)}>Toggle Theme</button>
 
-      <h3>{msg}</h3>
-    </div>
-  );
-}
+//       <h3>{msg}</h3>
+//     </div>
+//   );
+// }
 
 
-export default App;
+// export default App;
+
+
+
+// import { useState } from "react";
+
+// function App() {
+//   const [a, setA] = useState(0);
+//   const [b, setB] = useState(0);
+//   const [res, setRes] = useState(0);
+
+//   return (
+//     <>
+//       <input onChange={(e)=>setA(Number(e.target.value))} />
+//       <input onChange={(e)=>setB(Number(e.target.value))} />
+
+//       <button onClick={()=>setRes(a+b)}>+</button>
+//       <button onClick={()=>setRes(a-b)}>-</button>
+//       <button onClick={()=>setRes(a*b)}>*</button>
+//       <button onClick={()=>setRes(a/b)}>/</button>
+
+//       <h2>{res}</h2>
+//     </>
+//   );
+// }
+// export default App;
+
+
+
+
+// import { useRef } from "react";
+// import "./App.css";
+
+// const App=()=>{
+//   const passwordRef=useRef();
+//   const confirmRef=useRef();
+  
+//   const handleSubmit=(e)=>{
+//     e.preventDefault();
+//   if(passwordRef.current.value !== confirmRef.current.value){
+//     alert("passwords do not match");
+//     return;
+//   }
+//   alert("Form submitted successfully!");
+//   }
+
+//   return(
+//     <div className="container">
+//       <form onSubmit={handleSubmit}>
+//         <h1>Signup Form</h1>
+//         <input type="text" placeholder="Enter username" 
+//         required minLength="3" maxLength="15" pattern="[A-Za-z0-9]+" title="Only letters and numbers allowed" />
+//         <input type="email" placeholder="Enter email" required />
+//         <input type="password" placeholder="Enter password" required minLength="6" ref={passwordRef} />
+//         <input type="password" placeholder="Confirm password" required minLength="6" ref={confirmRef} />
+//         <button type="submit">Register</button>
+//       </form>
+//     </div>
+//   )
+// }
+// export default App;
