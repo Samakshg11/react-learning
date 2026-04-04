@@ -1947,17 +1947,28 @@
 // export default App;
 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function Counter() {
-  const [count, setCount] = useState(0);
+// function Counter() {
+//   const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <h2>{count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
-    </div>
-  );
+//   return (
+//     <div>
+//       <h2>{count}</h2>
+//       <button onClick={() => setCount(count + 1)}>Increase</button>
+//     </div>
+//   );
+// }
+
+// export default Counter;
+
+
+function User(props) {
+  return <h2>Name: {props.name}</h2>;
 }
 
-export default Counter;
+function App() {
+  return <User name="Samaksh" />;
+}
+
+export default App;
