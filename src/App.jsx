@@ -1975,20 +1975,39 @@
 
 
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
-function Timer() {
-  const [time, setTime] = useState(0);
+// function Timer() {
+//   const [time, setTime] = useState(0);
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(time + 1);
-    }, 1000);
+//   useEffect(() => {
+//     const id = setInterval(() => {
+//       setTime(time + 1);
+//     }, 1000);
 
-    return () => clearInterval(id);
-  }, [time]);
+//     return () => clearInterval(id);
+//   }, [time]);
 
-  return <h2>{time}</h2>;
+//   return <h2>{time}</h2>;
+// }
+
+// export default Timer;
+
+
+import { useState } from "react";
+
+function Form() {
+  const [name, setName] = useState("");
+
+  return (
+    <div>
+      <input 
+        type="text" 
+        onChange={(e) => setName(e.target.value)} 
+      />
+      <h3>{name}</h3>
+    </div>
+  );
 }
 
-export default Timer;
+export default Form;
