@@ -2084,14 +2084,33 @@
 
 // export default App;
 
-function App() {
-  const isLoggedIn = true;
+// function App() {
+//   const isLoggedIn = true;
+
+//   return (
+//     <div>
+//       {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import { useRef } from "react";
+
+function InputFocus() {
+  const inputRef = useRef();
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
 
   return (
     <div>
-      {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
+      <input ref={inputRef} />
+      <button onClick={handleClick}>Focus</button>
     </div>
   );
 }
 
-export default App;
+export default InputFocus;
