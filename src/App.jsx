@@ -1963,12 +1963,32 @@
 // export default Counter;
 
 
-function User(props) {
-  return <h2>Name: {props.name}</h2>;
+// function User(props) {
+//   return <h2>Name: {props.name}</h2>;
+// }
+
+// function App() {
+//   return <User name="Samaksh" />;
+// }
+
+// export default App;
+
+
+
+import { useState, useEffect } from "react";
+
+function Timer() {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(time + 1);
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [time]);
+
+  return <h2>{time}</h2>;
 }
 
-function App() {
-  return <User name="Samaksh" />;
-}
-
-export default App;
+export default Timer;
