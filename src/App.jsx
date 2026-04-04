@@ -1994,20 +1994,40 @@
 // export default Timer;
 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function Form() {
-  const [name, setName] = useState("");
+// function Form() {
+//   const [name, setName] = useState("");
 
-  return (
-    <div>
-      <input 
-        type="text" 
-        onChange={(e) => setName(e.target.value)} 
-      />
-      <h3>{name}</h3>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <input 
+//         type="text" 
+//         onChange={(e) => setName(e.target.value)} 
+//       />
+//       <h3>{name}</h3>
+//     </div>
+//   );
+// }
 
-export default Form;
+// export default Form;
+
+
+// import { useRef } from "react";
+
+// function InputFocus() {
+//   const inputRef = useRef();
+
+//   const handleClick = () => {
+//     inputRef.current.focus();
+//   };
+
+//   return (
+//     <div>
+//       <input ref={inputRef} />
+//       <button onClick={handleClick}>Focus</button>
+//     </div>
+//   );
+// }
+
+// export default InputFocus;
