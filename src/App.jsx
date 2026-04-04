@@ -129,7 +129,12 @@
 //       <button onClick={handleAddUser}>Add User</button>
 //       <button onClick={handleRemoveUser}>Remove User</button>
       
-      
+//       {user && (
+//   <div>
+//     <h3>Name: {user.name}</h3>
+//     <h3>Age: {user.age}</h3>
+//   </div>
+// )}
 
 //     </>
 //   );
@@ -1846,52 +1851,51 @@
 
 // export default App;
 
-import { createContext, useContext, useState } from "react";
+// import { createContext, useContext, useState } from "react";
 
-// 1. Context create kiya
-const AuthContext = createContext();
+// // 1. Context create kiya
+// const AuthContext = createContext();
 
-function App() {
-  // 2. Login state
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+// function App() {
+//   // 2. Login state
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // 3. Login function
-  const login = () => {
-    setIsAuthenticated(true);
-  };
+//   // 3. Login function
+//   const login = () => {
+//     setIsAuthenticated(true);
+//   };
 
-  // 4. Logout function
-  const logout = () => {
-    setIsAuthenticated(false);
-  };
+//   // 4. Logout function
+//   const logout = () => {
+//     setIsAuthenticated(false);
+//   };
 
-  return (
-    // 5. Provider se data share kiya
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      <Home />
-    </AuthContext.Provider>
-  );
-}
+//   return (
+//     // 5. Provider se data share kiya
+//     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+//       <Home />
+//     </AuthContext.Provider>
+//   );
+// }
 
-// 6. Dusra component jo data use karega
-function Home() {
-  const { isAuthenticated, login, logout } = useContext(AuthContext);
+// // 6. Dusra component jo data use karega
+// function Home() {
+//   const { isAuthenticated, login, logout } = useContext(AuthContext);
 
-  return (
-    <div>
-      <h2>{isAuthenticated ? "Logged In" : "Logged Out"}</h2>
+//   return (
+//     <div>
+//       <h2>{isAuthenticated ? "Logged In" : "Logged Out"}</h2>
 
-      <button onClick={login}>Login</button>
-      <button onClick={logout}>Logout</button>
-    </div>
-  );
-}
-
-export default App;
-
+//       <button onClick={login}>Login</button>
+//       <button onClick={logout}>Logout</button>
+//     </div>
+//   );
+// }
+// export default App;
 
 
-import PropTypes from "prop-types";
+
+// import PropTypes from "prop-types";
 
 // function App(){
 //     const Hotel={
@@ -1941,3 +1945,5 @@ import PropTypes from "prop-types";
 //     data:PropTypes.object
 // };
 // export default App;
+
+
