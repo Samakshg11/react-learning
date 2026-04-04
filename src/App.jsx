@@ -2031,3 +2031,17 @@
 // }
 
 // export default InputFocus;
+
+function App() {
+  const users = ["Aman", "Rahul", "Sam"];
+
+  return (
+    <ul>
+      {users.map((user, index) => (
+        <li key={index}>{user}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default App;
