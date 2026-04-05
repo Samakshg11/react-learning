@@ -2117,24 +2117,44 @@
 
 
 
+// const redis = require("redis");
+
+// // client create
+// const client = redis.createClient();
+
+// client.on("error", (err) => {
+//   console.log("Redis Error:", err);
+// });
+
+// async function run() {
+//   await client.connect();
+
+//   // SET value
+//   await client.set("name", "Samaksh");
+
+//   // GET value
+//   const value = await client.get("name");
+//   console.log("Value:", value);
+
+//   await client.quit();
+// }
+
+// run();
+
 const redis = require("redis");
-
-// client create
 const client = redis.createClient();
-
-client.on("error", (err) => {
-  console.log("Redis Error:", err);
-});
 
 async function run() {
   await client.connect();
 
-  // SET value
-  await client.set("name", "Samaksh");
+  const user = { name: "Samaksh", age: 20 };
 
-  // GET value
-  const value = await client.get("name");
-  console.log("Value:", value);
+  // store object
+  await client.set("user", JSON.stringify(user));
+
+  // get object
+  const data = await client.get("user");
+  console.log(JSON.parse(data));
 
   await client.quit();
 }
