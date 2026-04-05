@@ -2070,31 +2070,31 @@
 //   );
 // }
 
-export default App;
+// export default App;
 
-function App() {
-  const isLoggedIn = true;
+// function App() {
+//   const isLoggedIn = true;
 
-  return (
-    <div>
-      {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
 
-function App() {
-  const isLoggedIn = true;
+// function App() {
+//   const isLoggedIn = true;
 
-  return (
-    <div>
-      {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
 
 // import { useRef } from "react";
 
@@ -2114,3 +2114,4 @@ export default App;
 // }
 
 // export default InputFocus;
+
