@@ -2180,23 +2180,45 @@
 
 // run();
 
+// const redis = require("redis");
+// const client = redis.createClient();
+
+// async function run() {
+//   await client.connect();
+
+//   // 5 seconds ke liye data store
+//   await client.set("temp", "Hello", {
+//     EX: 5
+//   });
+
+//   console.log(await client.get("temp")); // milega
+
+//   setTimeout(async () => {
+//     console.log(await client.get("temp")); // null ho jayega
+//     await client.quit();
+//   }, 6000);
+// }
+
+// run();
+
+
 const redis = require("redis");
 const client = redis.createClient();
 
 async function run() {
   await client.connect();
 
-  // 5 seconds ke liye data store
-  await client.set("temp", "Hello", {
-    EX: 5
-  });
+  await client.set("count", 0);
 
-  console.log(await client.get("temp")); // milega
+  await client.incr("count");
+  await client.incr("count");
 
-  setTimeout(async () => {
-    console.log(await client.get("temp")); // null ho jayega
-    await client.quit();
-  }, 6000);
+  console.log(await client.get("count")); // 2
+
+  await client.decr("count");
+  console.log(await client.get("count")); // 1
+
+  await client.quit();
 }
 
 run();
