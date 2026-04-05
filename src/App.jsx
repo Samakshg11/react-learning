@@ -2032,19 +2032,19 @@
 
 // export default InputFocus;
 
-// function App() {
-//   const users = ["Aman", "Rahul", "Sam"];
+function App() {
+  const users = ["Aman", "Rahul", "Sam"];
 
-//   return (
-//     <ul>
-//       {users.map((user, index) => (
-//         <li key={index}>{user}</li>
-//       ))}
-//     </ul>
-//   );
-// }
+  return (
+    <ul>
+      {users.map((user, index) => (
+        <li key={index}>{user}</li>
+      ))}
+    </ul>
+  );
+}
 
-// export default App;
+export default App;
 
 // import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
