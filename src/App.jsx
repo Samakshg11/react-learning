@@ -2096,21 +2096,21 @@
 
 // export default App;
 
-import { useRef } from "react";
+// import { useRef } from "react";
 
-function InputFocus() {
-  const inputRef = useRef();
+// function InputFocus() {
+//   const inputRef = useRef();
 
-  const handleClick = () => {
-    inputRef.current.focus();
-  };
+//   const handleClick = () => {
+//     inputRef.current.focus();
+//   };
 
-  return (
-    <div>
-      <input ref={inputRef} />
-      <button onClick={handleClick}>Focus</button>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <input ref={inputRef} />
+//       <button onClick={handleClick}>Focus</button>
+//     </div>
+//   );
+// }
 
-export default InputFocus;
+// export default InputFocus;
