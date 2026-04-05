@@ -2163,19 +2163,19 @@
 
 
 
-const redis = require("redis");
-const client = redis.createClient();
+// const redis = require("redis");
+// const client = redis.createClient();
 
-async function run() {
-  await client.connect();
+// async function run() {
+//   await client.connect();
 
-  await client.lPush("tasks", "Task1");
-  await client.lPush("tasks", "Task2");
+//   await client.lPush("tasks", "Task1");
+//   await client.lPush("tasks", "Task2");
 
-  const tasks = await client.lRange("tasks", 0, -1);
-  console.log(tasks);
+//   const tasks = await client.lRange("tasks", 0, -1);
+//   console.log(tasks);
 
-  await client.quit();
-}
+//   await client.quit();
+// }
 
-run();
+// run();
