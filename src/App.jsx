@@ -2179,3 +2179,24 @@
 // }
 
 // run();
+
+const redis = require("redis");
+const client = redis.createClient();
+
+async function run() {
+  await client.connect();
+
+  // 5 seconds ke liye data store
+  await client.set("temp", "Hello", {
+    EX: 5
+  });
+
+  console.log(await client.get("temp")); // milega
+
+  setTimeout(async () => {
+    console.log(await client.get("temp")); // null ho jayega
+    await client.quit();
+  }, 6000);
+}
+
+run();
