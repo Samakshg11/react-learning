@@ -2141,20 +2141,39 @@
 
 // run();
 
+// const redis = require("redis");
+// const client = redis.createClient();
+
+// async function run() {
+//   await client.connect();
+
+//   const user = { name: "Samaksh", age: 20 };
+
+//   // store object
+//   await client.set("user", JSON.stringify(user));
+
+//   // get object
+//   const data = await client.get("user");
+//   console.log(JSON.parse(data));
+
+//   await client.quit();
+// }
+
+// run();
+
+
+
 const redis = require("redis");
 const client = redis.createClient();
 
 async function run() {
   await client.connect();
 
-  const user = { name: "Samaksh", age: 20 };
+  await client.lPush("tasks", "Task1");
+  await client.lPush("tasks", "Task2");
 
-  // store object
-  await client.set("user", JSON.stringify(user));
-
-  // get object
-  const data = await client.get("user");
-  console.log(JSON.parse(data));
+  const tasks = await client.lRange("tasks", 0, -1);
+  console.log(tasks);
 
   await client.quit();
 }
