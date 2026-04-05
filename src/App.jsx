@@ -2032,19 +2032,19 @@
 
 // export default InputFocus;
 
-function App() {
-  const users = ["Aman", "Rahul", "Sam"];
+// function App() {
+//   const users = ["Aman", "Rahul", "Sam"];
 
-  return (
-    <ul>
-      {users.map((user, index) => (
-        <li key={index}>{user}</li>
-      ))}
-    </ul>
-  );
-}
+//   return (
+//     <ul>
+//       {users.map((user, index) => (
+//         <li key={index}>{user}</li>
+//       ))}
+//     </ul>
+//   );
+// }
 
-export default App;
+// export default App;
 
 // import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -2115,3 +2115,28 @@ export default App;
 
 // export default InputFocus;
 
+
+
+const redis = require("redis");
+
+// client create
+const client = redis.createClient();
+
+client.on("error", (err) => {
+  console.log("Redis Error:", err);
+});
+
+async function run() {
+  await client.connect();
+
+  // SET value
+  await client.set("name", "Samaksh");
+
+  // GET value
+  const value = await client.get("name");
+  console.log("Value:", value);
+
+  await client.quit();
+}
+
+run();
