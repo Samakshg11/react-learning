@@ -2202,42 +2202,42 @@
 // run();
 
 
-const redis = require("redis");
-const client = redis.createClient();
+// const redis = require("redis");
+// const client = redis.createClient();
 
-async function run() {
-  await client.connect();
+// async function run() {
+//   await client.connect();
 
-  await client.set("count", 0);
+//   await client.set("count", 0);
 
-  await client.incr("count");
-  await client.incr("count");
+//   await client.incr("count");
+//   await client.incr("count");
 
-  console.log(await client.get("count")); // 2
+//   console.log(await client.get("count")); // 2
 
-  await client.decr("count");
-  console.log(await client.get("count")); // 1
+//   await client.decr("count");
+//   console.log(await client.get("count")); // 1
 
-  await client.quit();
-}
+//   await client.quit();
+// }
 
-run();
+// run();
 
-const redis = require("redis");
-const client = redis.createClient();
+// const redis = require("redis");
+// const client = redis.createClient();
 
-async function run() {
-  await client.connect();
+// async function run() {
+//   await client.connect();
 
-  await client.hSet("user:1", {
-    name: "Samaksh",
-    age: "20"
-  });
+//   await client.hSet("user:1", {
+//     name: "Samaksh",
+//     age: "20"
+//   });
 
-  const user = await client.hGetAll("user:1");
-  console.log(user);
+//   const user = await client.hGetAll("user:1");
+//   console.log(user);
 
-  await client.quit();
-}
+//   await client.quit();
+// }
 
-run();
+// run();
