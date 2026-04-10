@@ -9,7 +9,7 @@ export default function Hero() {
 
   return (
     <section style={inlineStyle}>
-      <h1>React + Vite Landing Page</h1>
+      <h1>React + Vite Landing Page...</h1>
       <p>Fast development and optimized production build</p>
       <button>Get Started</button>
     </section>
