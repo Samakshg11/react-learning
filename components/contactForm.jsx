@@ -25,33 +25,33 @@
 
 // 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-export default function Contact() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+// export default function Contact() {
+//     const [name, setName] = useState('');
+//     const [email, setEmail] = useState('');
 
-    const [submittedName, setSubmittedName] = useState('');
+//     const [submittedName, setSubmittedName] = useState('');
 
-    function handleSubmit(e) {
-        e.preventDefault();
+//     function handleSubmit(e) {
+//         e.preventDefault();
 
-        const name = e.target.name.elements[0].value;
-        const email = e.target.email.elements[1].value;
-        setSubmittedName(name);
-        alert(`Uncontrolled Name: ${name}, ${email}`);
-    }
-    return(
-        <form onSubmit={handleSubmit} style={{textAlign: 'center'}}>
-            <input type="text" placeholder="Enter name" 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            />
-            <input type="email" placeholder="Enter email" />
-            <button type="submit">Submit</button>
-        </form>
-    )
-}
+//         const name = e.target.name.elements[0].value;
+//         const email = e.target.email.elements[1].value;
+//         setSubmittedName(name);
+//         alert(`Uncontrolled Name: ${name}, ${email}`);
+//     }
+//     return(
+//         <form onSubmit={handleSubmit} style={{textAlign: 'center'}}>
+//             <input type="text" placeholder="Enter name" 
+//             value={name}
+//             onChange={(e) => setName(e.target.value)}
+//             />
+//             <input type="email" placeholder="Enter email" />
+//             <button type="submit">Submit</button>
+//         </form>
+//     )
+// }
 
 // import { useState } from "react";
 
