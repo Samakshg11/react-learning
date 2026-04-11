@@ -133,5 +133,4 @@
 // }
 
 
-//make a new contact form with useRef hook
-import React, { useRef } from 'react';
+//make a counter using redux
