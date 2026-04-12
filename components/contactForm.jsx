@@ -25,37 +25,9 @@
 
 // 
 
-// import { useState } from "react";
-
-// export default function Contact() {
-//     const [name, setName] = useState('');
-//     const [email, setEmail] = useState('');
-
-//     const [submittedName, setSubmittedName] = useState('');
-
-//     function handleSubmit(e) {
-//         e.preventDefault();
-
-//         const name = e.target.name.elements[0].value;
-//         const email = e.target.email.elements[1].value;
-//         setSubmittedName(name);
-//         alert(`Uncontrolled Name: ${name}, ${email}`);
-//     }
-//     return(
-//         <form onSubmit={handleSubmit} style={{textAlign: 'center'}}>
-//             <input type="text" placeholder="Enter name" 
-//             value={name}
-//             onChange={(e) => setName(e.target.value)}
-//             />
-//             <input type="email" placeholder="Enter email" />
-//             <button type="submit">Submit</button>
-//         </form>
-//     )
-// }
-
 import { useState } from "react";
 
-export default function ContactForm() {
+export default function Contact() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
@@ -64,8 +36,8 @@ export default function ContactForm() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const name = e.target.elements[0].value;
-        const email = e.target.elements[1].value;
+        const name = e.target.name.elements[0].value;
+        const email = e.target.email.elements[1].value;
         setSubmittedName(name);
         alert(`Uncontrolled Name: ${name}, ${email}`);
     }
@@ -74,25 +46,53 @@ export default function ContactForm() {
             <input type="text" placeholder="Enter name" 
             value={name}
             onChange={(e) => setName(e.target.value)}
-            onKeyDown={()=>console.log("Key Down")}
-            onKeyUp={()=>console.log("Key Up")}
             />
-            <br></br>
-            <input type="email" placeholder="Enter email" 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={()=> console.log("Key pressed")}
-            />
-            <br></br>
-            <button type="submit" onMouseUp={()=>console.log("Mouse Up")}>Submit</button>
-            <p>Live Name (Controlled):{name}</p>
-            <p>Submitted Name (UnControlled):{submittedName}</p>
+            <input type="email" placeholder="Enter email" />
+            <button type="submit">Submit</button>
         </form>
     )
 }
 
+// import { useState } from "react";
+
+// export default function ContactForm() {
+//     const [name, setName] = useState('');
+//     const [email, setEmail] = useState('');
+
+//     const [submittedName, setSubmittedName] = useState('');
+
+//     function handleSubmit(e) {
+//         e.preventDefault();
+
+//         const name = e.target.elements[0].value;
+//         const email = e.target.elements[1].value;
+//         setSubmittedName(name);
+//         alert(`Uncontrolled Name: ${name}, ${email}`);
+//     }
+//     return(
+//         <form onSubmit={handleSubmit} style={{textAlign: 'center'}}>
+//             <input type="text" placeholder="Enter name" 
+//             value={name}
+//             onChange={(e) => setName(e.target.value)}
+//             onKeyDown={()=>console.log("Key Down")}
+//             onKeyUp={()=>console.log("Key Up")}
+//             />
+//             <br></br>
+//             <input type="email" placeholder="Enter email" 
+//             value={email}
+//             onChange={(e) => setEmail(e.target.value)}
+//             onKeyDown={()=> console.log("Key pressed")}
+//             />
+//             <br></br>
+//             <button type="submit" onMouseUp={()=>console.log("Mouse Up")}>Submit</button>
+//             <p>Live Name (Controlled):{name}</p>
+//             <p>Submitted Name (UnControlled):{submittedName}</p>
+//         </form>
+//     )
+// }
 
 
-// import React from 'react';
-// import {useState} from 'react';
+
+// // import React from 'react';
+// // import {useState} from 'react';
 
