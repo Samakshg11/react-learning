@@ -1,27 +1,27 @@
-import React from 'react'
+// import React from 'react'
 
-export default function ContactForm() {
-    const [name, setName] = useState('')
-  return (
-    <div>
-        <h1>Contact me</h1>
-        <input type="text"
-        placeholder='Enter name'
-        onChange={(e) => {
-            setName(e.target.value);
-            console.log("Name: ", e.target.value);
-        }} />
+// export default function ContactForm() {
+//     const [name, setName] = useState('')
+//   return (
+//     <div>
+//         <h1>Contact me</h1>
+//         <input type="text"
+//         placeholder='Enter name'
+//         onChange={(e) => {
+//             setName(e.target.value);
+//             console.log("Name: ", e.target.value);
+//         }} />
 
-        <button
-            onClick={()=>{
-                alert(`Submitted name is: ${name}`);
-            }}>
-                Submit
-        </button>
+//         <button
+//             onClick={()=>{
+//                 alert(`Submitted name is: ${name}`);
+//             }}>
+//                 Submit
+//         </button>
       
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
 
 
