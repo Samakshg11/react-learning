@@ -2337,21 +2337,35 @@
 // }
 
 
-import { forwardRef, useRef } from "react";
+// import { forwardRef, useRef } from "react";
 
-const Input = forwardRef((props, ref) => {
-  return <input ref={ref} />;
-});
+// const Input = forwardRef((props, ref) => {
+//   return <input ref={ref} />;
+// });
+
+// function App() {
+//   const inputRef = useRef();
+
+//   return (
+//     <>
+//       <Input ref={inputRef} />
+//       <button onClick={() => inputRef.current.focus()}>
+//         Focus Input
+//       </button>
+//     </>
+//   );
+// }
+
+
+
+import React, { Suspense, lazy } from "react";
+
+const About = lazy(() => import("./About"));
 
 function App() {
-  const inputRef = useRef();
-
   return (
-    <>
-      <Input ref={inputRef} />
-      <button onClick={() => inputRef.current.focus()}>
-        Focus Input
-      </button>
-    </>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <About />
+    </Suspense>
   );
 }
