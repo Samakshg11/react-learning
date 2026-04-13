@@ -2305,19 +2305,19 @@
 // }
 
 
-import { createContext, useContext } from "react";
+// import { createContext, useContext } from "react";
 
-const ThemeContext = createContext();
+// const ThemeContext = createContext();
 
-function App() {
-  return (
-    <ThemeContext.Provider value="dark">
-      <Child />
-    </ThemeContext.Provider>
-  );
-}
+// function App() {
+//   return (
+//     <ThemeContext.Provider value="dark">
+//       <Child />
+//     </ThemeContext.Provider>
+//   );
+// }
 
-function Child() {
-  const theme = useContext(ThemeContext);
-  return <h1>{theme}</h1>;
-}
+// function Child() {
+//   const theme = useContext(ThemeContext);
+//   return <h1>{theme}</h1>;
+// }
