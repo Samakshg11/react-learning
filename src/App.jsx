@@ -2324,14 +2324,34 @@
 
 
 
-const components = {
-  home: () => <h1>Home</h1>,
-  about: () => <h1>About</h1>,
-};
+// const components = {
+//   home: () => <h1>Home</h1>,
+//   about: () => <h1>About</h1>,
+// };
+
+// function App() {
+//   const [page, setPage] = useState("home");
+//   const Component = components[page];
+
+//   return <Component />;
+// }
+
+
+import { forwardRef, useRef } from "react";
+
+const Input = forwardRef((props, ref) => {
+  return <input ref={ref} />;
+});
 
 function App() {
-  const [page, setPage] = useState("home");
-  const Component = components[page];
+  const inputRef = useRef();
 
-  return <Component />;
+  return (
+    <>
+      <Input ref={inputRef} />
+      <button onClick={() => inputRef.current.focus()}>
+        Focus Input
+      </button>
+    </>
+  );
 }
