@@ -2287,19 +2287,37 @@
 
 
 
-import { useState, useCallback } from "react";
+// import { useState, useCallback } from "react";
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   const handleClick = useCallback(() => {
+//     console.log("Clicked");
+//   }, []);
+
+//   return (
+//     <>
+//       <button onClick={handleClick}>Click</button>
+//       <button onClick={() => setCount(count + 1)}>+</button>
+//     </>
+//   );
+// }
+
+
+import { createContext, useContext } from "react";
+
+const ThemeContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const handleClick = useCallback(() => {
-    console.log("Clicked");
-  }, []);
-
   return (
-    <>
-      <button onClick={handleClick}>Click</button>
-      <button onClick={() => setCount(count + 1)}>+</button>
-    </>
+    <ThemeContext.Provider value="dark">
+      <Child />
+    </ThemeContext.Provider>
   );
+}
+
+function Child() {
+  const theme = useContext(ThemeContext);
+  return <h1>{theme}</h1>;
 }
