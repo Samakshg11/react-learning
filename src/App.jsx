@@ -2358,14 +2358,39 @@
 
 
 
-import React, { Suspense, lazy } from "react";
+// import React, { Suspense, lazy } from "react";
 
-const About = lazy(() => import("./About"));
+// const About = lazy(() => import("./About"));
+
+// function App() {
+//   return (
+//     <Suspense fallback={<h1>Loading...</h1>}>
+//       <About />
+//     </Suspense>
+//   );
+// }
+
+
+import { useReducer } from "react";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "inc":
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
-      <About />
-    </Suspense>
+    <>
+      <h1>{state.count}</h1>
+      <button onClick={() => dispatch({ type: "inc" })}>
+        +
+      </button>
+    </>
   );
 }
