@@ -2267,20 +2267,39 @@
 
 
 
-import { useMemo, useState } from "react";
+// import { useMemo, useState } from "react";
+
+// function App() {
+//   const [num, setNum] = useState(0);
+
+//   const expensiveCalc = useMemo(() => {
+//     console.log("Calculating...");
+//     return num * 1000;
+//   }, [num]);
+
+//   return (
+//     <>
+//       <h1>{expensiveCalc}</h1>
+//       <button onClick={() => setNum(num + 1)}>Increase</button>
+//     </>
+//   );
+// }
+
+
+
+import { useState, useCallback } from "react";
 
 function App() {
-  const [num, setNum] = useState(0);
+  const [count, setCount] = useState(0);
 
-  const expensiveCalc = useMemo(() => {
-    console.log("Calculating...");
-    return num * 1000;
-  }, [num]);
+  const handleClick = useCallback(() => {
+    console.log("Clicked");
+  }, []);
 
   return (
     <>
-      <h1>{expensiveCalc}</h1>
-      <button onClick={() => setNum(num + 1)}>Increase</button>
+      <button onClick={handleClick}>Click</button>
+      <button onClick={() => setCount(count + 1)}>+</button>
     </>
   );
 }
