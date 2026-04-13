@@ -2321,3 +2321,17 @@
 //   const theme = useContext(ThemeContext);
 //   return <h1>{theme}</h1>;
 // }
+
+
+
+const components = {
+  home: () => <h1>Home</h1>,
+  about: () => <h1>About</h1>,
+};
+
+function App() {
+  const [page, setPage] = useState("home");
+  const Component = components[page];
+
+  return <Component />;
+}
