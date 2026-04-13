@@ -2244,23 +2244,43 @@
 
 
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
-function useFetch(url) {
-  const [data, setData] = useState(null);
+// function useFetch(url) {
+//   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => setData(data));
-  }, [url]);
+//   useEffect(() => {
+//     fetch(url)
+//       .then(res => res.json())
+//       .then(data => setData(data));
+//   }, [url]);
 
-  return data;
-}
+//   return data;
+// }
 
-// Usage
+// // Usage
+// function App() {
+//   const data = useFetch("https://jsonplaceholder.typicode.com/posts");
+
+//   return <div>{data ? data.length : "Loading..."}</div>;
+// }
+
+
+
+import { useMemo, useState } from "react";
+
 function App() {
-  const data = useFetch("https://jsonplaceholder.typicode.com/posts");
+  const [num, setNum] = useState(0);
 
-  return <div>{data ? data.length : "Loading..."}</div>;
+  const expensiveCalc = useMemo(() => {
+    console.log("Calculating...");
+    return num * 1000;
+  }, [num]);
+
+  return (
+    <>
+      <h1>{expensiveCalc}</h1>
+      <button onClick={() => setNum(num + 1)}>Increase</button>
+    </>
+  );
 }
