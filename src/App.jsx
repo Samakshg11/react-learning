@@ -2241,3 +2241,26 @@
 // }
 
 // run();
+
+
+
+import { useState, useEffect } from "react";
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setData(data));
+  }, [url]);
+
+  return data;
+}
+
+// Usage
+function App() {
+  const data = useFetch("https://jsonplaceholder.typicode.com/posts");
+
+  return <div>{data ? data.length : "Loading..."}</div>;
+}
