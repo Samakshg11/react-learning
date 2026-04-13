@@ -2371,26 +2371,38 @@
 // }
 
 
-import { useReducer } from "react";
+// import { useReducer } from "react";
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "inc":
-      return { count: state.count + 1 };
-    default:
-      return state;
-  }
-}
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case "inc":
+//       return { count: state.count + 1 };
+//     default:
+//       return state;
+//   }
+// }
+
+// function App() {
+//   const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+//   return (
+//     <>
+//       <h1>{state.count}</h1>
+//       <button onClick={() => dispatch({ type: "inc" })}>
+//         +
+//       </button>
+//     </>
+//   );
+// }
+
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const [value, setValue] = useState("");
 
   return (
-    <>
-      <h1>{state.count}</h1>
-      <button onClick={() => dispatch({ type: "inc" })}>
-        +
-      </button>
-    </>
+    <input
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
   );
 }
