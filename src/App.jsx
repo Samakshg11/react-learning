@@ -2382,18 +2382,18 @@
 //   }
 // }
 
-// function App() {
-//   const [state, dispatch] = useReducer(reducer, { count: 0 });
+function App() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
 
-//   return (
-//     <>
-//       <h1>{state.count}</h1>
-//       <button onClick={() => dispatch({ type: "inc" })}>
-//         +
-//       </button>
-//     </>
-//   );
-// }
+  return (
+    <>
+      <h1>{state.count}</h1>
+      <button onClick={() => dispatch({ type: "inc" })}>
+        +
+      </button>
+    </>
+  );
+}
 
 
 // function App() {
