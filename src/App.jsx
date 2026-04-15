@@ -2358,17 +2358,17 @@
 
 
 
-import React, { Suspense, lazy } from "react";
+// import React, { Suspense, lazy } from "react";
 
-const About = lazy(() => import("./About"));
+// const About = lazy(() => import("./About"));
 
-function App() {
-  return (
-    <Suspense fallback={<h1>Loading...</h1>}>
-      <About />
-    </Suspense>
-  );
-}
+// function App() {
+//   return (
+//     <Suspense fallback={<h1>Loading...</h1>}>
+//       <About />
+//     </Suspense>
+//   );
+// }
 
 
 // import { useReducer } from "react";
