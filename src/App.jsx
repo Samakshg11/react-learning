@@ -2343,18 +2343,18 @@
 //   return <input ref={ref} />;
 // });
 
-// function App() {
-//   const inputRef = useRef();
+function App() {
+  const inputRef = useRef();
 
-//   return (
-//     <>
-//       <Input ref={inputRef} />
-//       <button onClick={() => inputRef.current.focus()}>
-//         Focus Input
-//       </button>
-//     </>
-//   );
-// }
+  return (
+    <>
+      <Input ref={inputRef} />
+      <button onClick={() => inputRef.current.focus()}>
+        Focus Input
+      </button>
+    </>
+  );
+}
 
 
 
