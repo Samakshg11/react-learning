@@ -2396,13 +2396,13 @@
 // }
 
 
-function App() {
-  const [value, setValue] = useState("");
+// function App() {
+//   const [value, setValue] = useState("");
 
-  return (
-    <input
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-}
+//   return (
+//     <input
+//       value={value}
+//       onChange={(e) => setValue(e.target.value)}
+//     />
+//   );
+// }
