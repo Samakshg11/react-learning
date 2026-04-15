@@ -2324,17 +2324,17 @@
 
 
 
-// const components = {
-//   home: () => <h1>Home</h1>,
-//   about: () => <h1>About</h1>,
-// };
+const components = {
+  home: () => <h1>Home</h1>,
+  about: () => <h1>About</h1>,
+};
 
-// function App() {
-//   const [page, setPage] = useState("home");
-//   const Component = components[page];
+function App() {
+  const [page, setPage] = useState("home");
+  const Component = components[page];
 
-//   return <Component />;
-// }
+  return <Component />;
+}
 
 
 // import { forwardRef, useRef } from "react";
@@ -2343,18 +2343,18 @@
 //   return <input ref={ref} />;
 // });
 
-function App() {
-  const inputRef = useRef();
+// function App() {
+//   const inputRef = useRef();
 
-  return (
-    <>
-      <Input ref={inputRef} />
-      <button onClick={() => inputRef.current.focus()}>
-        Focus Input
-      </button>
-    </>
-  );
-}
+//   return (
+//     <>
+//       <Input ref={inputRef} />
+//       <button onClick={() => inputRef.current.focus()}>
+//         Focus Input
+//       </button>
+//     </>
+//   );
+// }
 
 
 
